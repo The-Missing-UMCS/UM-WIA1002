@@ -1,0 +1,116 @@
+Version 1:
+public static void main(String[] args) {
+		String parent = "./src/Lab5/Q5/xml_files/";
+		String[] files = new File(parent).list();
+		Pattern p = Pattern.compile("</?(\\w+)>");
+		
+		for (String file : files) {
+			Stack<String> stack = new Stack<String>();
+			StringBuilder sb = new StringBuilder();
+			readFile(sb, String.format("%s%s", parent, file));
+			Matcher m = p.matcher(sb.toString());
+			boolean hasRoot = false;
+			boolean isValid = true;
+
+			System.out.print(sb);
+			
+			while (m.find() && isValid) {
+				String tag = m.group();
+				String content = m.group(1);
+
+				if (isClosedTag(tag)) {
+					if (isComplete(stack, content)) {
+						stack.pop();
+					} else {
+						System.out.printf("Begin Element : <%s> Invalid ending element : %s\n", stack.peek(), tag);
+						isValid = false;
+					}
+				} else {
+					if (content.equals("note")) {
+						if (hasRoot) {
+							System.out.println("Duplicate root element <note>");
+							isValid = false;
+							continue;
+						} else {
+							hasRoot = true;
+						}
+					}
+					
+					stack.push(content);
+
+				}
+			}
+
+			if (isValid)
+				System.out.println("The xml document is valid");
+			System.out.println();
+		}
+
+	}
+
+	public static boolean isClosedTag(String tag) {
+		return tag.startsWith("</") && tag.endsWith(">");
+	}
+
+	public static boolean isComplete(Stack<String> stack, String content) {
+		return stack.peek().equals(content);
+	}
+
+	public static void readFile(StringBuilder sb, String file) {
+		try (Scanner sc = new Scanner(new File(file))) {
+			while (sc.hasNextLine())
+				sb.append(sc.nextLine()).append('\n');
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+Version 2:
+public static void main(String[] args) {
+		String parent = "./src/Lab5/Q5/xml_files/";
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(parent))) {
+			Pattern pattern = Pattern.compile("<(/?)(\\w+)>");
+			for (Path file : stream) {
+				Stack<String> stack = new Stack<>();
+				StringBuilder sb = new StringBuilder();
+				Files.readAllLines(file).forEach(line -> sb.append(line).append('\n'));
+				Matcher matcher = pattern.matcher(sb.toString());
+				boolean hasRoot = false;
+				boolean isValid = true;
+				System.out.print(sb);
+
+				while (matcher.find() && isValid) {
+					boolean isClosingTag = matcher.group(1).equals("/");
+					String tag = matcher.group();
+					String content = matcher.group(2);
+					if (isClosingTag) {
+						if (stack.isEmpty() || !stack.peek().equals(content)) {
+							System.out.printf("Begin Element : <%s> Invalid ending element : %s\n", stack.peek(), tag);
+							isValid = false;
+						}
+					} else {
+						if (content.equals("note")) {
+							if (hasRoot) {
+								System.out.println("Duplicate root element <note>");
+								isValid = false;
+								continue;
+							}
+							hasRoot = true;
+						}
+						stack.push(content);
+					}
+				}
+
+				if (isValid && !stack.isEmpty())
+					System.out.printf("Begin Element : <%s> No closing element\n", stack.pop());
+				if (isValid && stack.isEmpty())
+					System.out.println("The xml document is valid");
+
+				System.out.println();
+			}
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+
+	}

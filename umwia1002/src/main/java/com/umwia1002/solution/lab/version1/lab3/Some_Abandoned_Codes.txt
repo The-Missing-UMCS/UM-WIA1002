@@ -1,0 +1,113 @@
+int smallFreq = smallBag.getFrequencyOf(arr[i]);
+int largeFreq = largeBag.getFrequencyOf(arr[i]);
+int diff = smallFreq - largeFreq;
+if(diff > 0) {
+				for(int j = 0; j < diff; j++) {
+					smallBag.remove(arr[i]);
+				}
+			}
+
+
+BagInterface<T> smallBag;
+		BagInterface<T> largeBag;
+		
+		if(getCurrentSize() < anotherBag.getCurrentSize()) {
+			smallBag = this;
+			largeBag = anotherBag;
+		} else {
+			smallBag = anotherBag;
+			largeBag = this;
+		}
+		
+		T[] arr = smallBag.toArray();
+		
+		for(int i = 0; i < arr.length; i++) {
+			if(largeBag.contains(arr[i])) 
+				largeBag.remove(arr[i]);
+			else 
+				smallBag.remove(arr[i]);
+		}
+		
+		return new ArrayBag<T>(smallBag.toArray());
+
+
+BagInterface<T> tmp = this;
+		for(int i = 0; i < bag.length; i++) {
+			if(anotherBag.contains(bag[i]))
+				tmp.remove(bag[i]);
+		}
+		
+		return new ArrayBag<T>(tmp.toArray());
+
+
+int size = Math.min(getCurrentSize(), anotherBag.getCurrentSize());
+		BagInterface<T> newBag = new ArrayBag<T>(size);
+		
+		for(int i = 0; i < numberOfEntries; i++) {			
+			if(newBag.contains(bag[i])) 
+				continue;
+			
+			int freq1 = getFrequencyOf(bag[i]);
+			int freq2 = anotherBag.getFrequencyOf(bag[i]);
+			
+			if(freq1 == 0 || freq2 == 0)
+				continue;
+			
+			for(int j = 0; j < Math.min(freq1, freq2); j++)
+				newBag.add(bag[i]);
+		}
+		
+		return new ArrayBag<T>(newBag.toArray());
+
+
+@Override
+	public BagInterface<T> intersection(BagInterface<T> anotherBag) {
+		int size = Math.min(getCurrentSize(), anotherBag.getCurrentSize());
+		BagInterface<T> newBag = new ArrayBag<T>(size);
+		
+		for(int i = 0; i < numberOfEntries; i++) {			
+			if(newBag.contains(bag[i])) 
+				continue;
+			
+			int freq1 = getFrequencyOf(bag[i]);
+			int freq2 = anotherBag.getFrequencyOf(bag[i]);
+			
+			for(int j = 0; j < Math.min(freq1, freq2); j++)
+				newBag.add(bag[i]);
+		}
+		
+		return new ArrayBag<T>(newBag.toArray());
+		
+	}
+	
+	public BagInterface<T> difference(BagInterface<T> anotherBag) {
+		int size = Math.min(getCurrentSize(), anotherBag.getCurrentSize());
+		BagInterface<T> newBag = new ArrayBag<T>(size);
+		
+		for(int i = 0; i < numberOfEntries; i++) {			
+			if(newBag.contains(bag[i])) 
+				continue;
+			
+			int freq1 = getFrequencyOf(bag[i]);
+			int freq2 = anotherBag.getFrequencyOf(bag[i]);
+			
+			for(int j = 0; j < freq1 - freq2; j++)
+				newBag.add(bag[i]);
+		}
+		
+		return new ArrayBag<T>(newBag.toArray());
+	}
+
+public BagInterface<T> union(BagInterface<T> anotherBag) {
+		int size1 = getCurrentSize(), size2 = anotherBag.getCurrentSize();
+		
+		T[] array1 = this.toArray();
+		T[] array2 = anotherBag.toArray();
+		
+		final Object[] joinedArray = (T[]) Array.newInstance(bag.getClass(), size1 + size2);
+		
+		System.arraycopy(array1, 0, joinedArray, 0, size1);
+		System.arraycopy(array2, 0, joinedArray, size1, size2);
+		
+		return new ArrayBag<T>(joinedArray);
+	}

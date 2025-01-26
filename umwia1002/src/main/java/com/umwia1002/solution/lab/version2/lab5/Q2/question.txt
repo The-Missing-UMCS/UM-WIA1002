@@ -1,0 +1,3 @@
+34 add 11 mul 7
+ob 300 mul 75 add 4350 cb div 15 add 1126
+ob ob 5 add 8 cb sub ob 7 sub 3 cb cb mul 8 add 25 mod 3

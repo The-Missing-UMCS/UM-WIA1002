@@ -1,0 +1,4 @@
+Buy 100 shares at RM 20
+Buy 20 shares at RM 24
+Buy 200 shares at RM 36
+Sell 150 shares at RM 30
