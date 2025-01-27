@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial2;
+package com.umwia1002.solution.tutorial.tutorial2;
 
 public class T2Q3 {
 	// Reference answer: https://github.com/samweihong/WIA1002-Data-Structure/blob/master/src/tutorial2/Q3.java

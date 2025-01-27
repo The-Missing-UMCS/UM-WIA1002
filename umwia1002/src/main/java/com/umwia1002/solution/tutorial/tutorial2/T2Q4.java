@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial2;
+package com.umwia1002.solution.tutorial.tutorial2;
 
 public class T2Q4 {
 	// What is erasure?
@@ -8,5 +8,5 @@ public class T2Q4 {
 	
 	// Why are Java generic implements using erasure? 
 	
-	// This approach enables the generic code to be backward-compatible with the legacy code thatuses raw types.
+	// This approach enables the generic code to be backward-compatible with the legacy code that uses raw types.
 }
