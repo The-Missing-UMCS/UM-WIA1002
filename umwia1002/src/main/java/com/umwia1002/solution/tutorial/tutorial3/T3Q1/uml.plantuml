@@ -1,0 +1,37 @@
+@startuml
+
+class CandyMachine {
+    InventoryService inventoryService
+    PaymentService paymentService
+    void operate()
+}
+
+class CashRegister {
+    double balance
+    double totalGain
+    double acceptAndReturn(double payment, double idealChange)
+    void addBalance(double amount)
+}
+
+enum Dispenser {
+    String name
+    double price
+    String getName()
+    double getPrice()
+}
+
+class InventoryService {
+    String getAvailableItems()
+    int getItemCount()
+    Dispenser selectItem(int index)
+}
+
+class PaymentService {
+    double processPayment(double price)
+}
+
+CandyMachine o-- InventoryService
+CandyMachine o-- PaymentService
+InventoryService *-- Dispenser
+PaymentService o-- CashRegister
+@enduml

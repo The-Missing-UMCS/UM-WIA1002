@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial3.T3Q2;
+package com.umwia1002.solution.tutorial.tutorial3.T3Q2;
 
 public interface BidCollectionInterface<E extends BidInterface> {
 	/**
