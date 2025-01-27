@@ -1,7 +1,10 @@
-package com.umwia1002.solution.tutorial.Tutorial1.T1Q4;
+package com.umwia1002.solution.tutorial.tutorial1.T1Q4;
 
+import lombok.Getter;
+
+@Getter
 public abstract class Vehicle {
-	double maxSpeed;
+	protected double maxSpeed;
 	protected double currentSpeed;
 
 	Vehicle(double maxSpeed) {
@@ -9,14 +12,6 @@ public abstract class Vehicle {
 	}
 	
 	abstract void accelerate();
-	
-	public double getCurrentSpeed() {
-		return this.currentSpeed;
-	}
-	
-	public double getMaxSpeed() {
-		return this.maxSpeed;
-	}
 	
 	public void pedalToTheMetal() {
 		while(this.currentSpeed < maxSpeed)

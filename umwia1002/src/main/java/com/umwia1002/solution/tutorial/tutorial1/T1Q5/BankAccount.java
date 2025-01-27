@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial1.T1Q5;
+package com.umwia1002.solution.tutorial.tutorial1.T1Q5;
 
 public class BankAccount implements Account {
 	int balance;
