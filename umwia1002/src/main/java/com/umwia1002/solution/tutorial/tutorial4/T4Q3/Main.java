@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial4.T4Q3;
+package com.umwia1002.solution.tutorial.tutorial4.T4Q3;
 
 import java.util.NoSuchElementException;
 

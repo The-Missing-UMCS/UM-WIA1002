@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial4.T4Q1;
+package com.umwia1002.solution.tutorial.tutorial4.T4Q1;
 
 import java.util.NoSuchElementException;
 
@@ -18,7 +18,7 @@ public class LinkedList<E> {
 //      Set the head to this firstNode.
 //
 //      g)
-		Node<E> newNode = new Node<E>(item, head);
+		Node<E> newNode = new Node<>(item, head);
 		if (tail == null)
 			tail = newNode;
 		head = newNode;
@@ -35,7 +35,7 @@ public class LinkedList<E> {
 //      Set the next of the tail to the newNode
 //
 //      g)
-		Node<E> newNode = new Node<E>(item, null);
+		Node<E> newNode = new Node<>(item, null);
 		if (tail == null)
 			head = newNode;
 		else
@@ -70,8 +70,7 @@ public class LinkedList<E> {
 			addLast(item);
 		} else {
 			Node<E> prev = node(index - 1);
-			Node<E> newNode = new Node<E>(item, prev.next);
-			prev.next = newNode;
+            prev.next = new Node<>(item, prev.next);
 			size++;
 		}
 	}

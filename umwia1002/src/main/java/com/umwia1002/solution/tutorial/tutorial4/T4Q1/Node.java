@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial4.T4Q1;
+package com.umwia1002.solution.tutorial.tutorial4.T4Q1;
 
 public class Node<E> {
 	E item;
