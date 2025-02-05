@@ -1,38 +1,27 @@
 package com.umwia1002.solution.lab.version2.lab6.Q5;
 
-public class Packet implements Comparable<Packet> {
-	private static final String[] TYPE = {"Data", "Video", "Voice"};
-	public static final int VOICE = 2;
-	public static final int VIDEO = 1;
-	public static final int DATA = 0;
-	
-	private static int index = 1;
-	
-	private String type;
-	private int priority;
-	private int code;
-	
-	Packet(int priority) {
-		this.type = TYPE[priority];
-		this.priority = priority;
-		this.code = index++;
-	}
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-	public String getType() {
-		return type;
-	}
+public record Packet(MediaType mediaType, int id) implements Comparable<Packet> {
+    @Override
+    public int compareTo(Packet o) {
+        return Integer.compare(mediaType.priority, o.mediaType.priority);
+    }
 
-	public int getPriority() {
-		return priority;
-	}
-	
-	@Override
-	public int compareTo(Packet o) {
-		return Integer.compare(this.priority, o.priority);
-	}
-	
-	@Override
-	public String toString() {
-		return String.format("%s %d (Priority=%d)", this.type, this.code, this.priority);
-	}
+    @Override
+    public String toString() {
+        return String.format("%s %d (Priority=%d)", mediaType.type, id, mediaType.priority);
+    }
+
+    @Getter
+    @RequiredArgsConstructor
+    public enum MediaType {
+        VOICE("Voice", 2),
+        VIDEO("Video", 1),
+        DATA("Data", 0);
+
+        private final String type;
+        private final int priority;
+    }
 }
