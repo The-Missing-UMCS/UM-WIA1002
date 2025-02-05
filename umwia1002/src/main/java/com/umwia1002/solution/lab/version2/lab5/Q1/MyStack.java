@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class MyStack<E> {
-	private LinkedList<E> list;
+	private final LinkedList<E> list;
 
 	MyStack() {
 		list = new LinkedList<>();
@@ -29,9 +29,7 @@ public class MyStack<E> {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		Iterator<E> ltr = list.iterator();
-		while (ltr.hasNext())
-			sb.append(" <-- ").append(ltr.next());
+        for (E e : list) sb.append(" <-- ").append(e);
 		return sb.toString();
 	}
 }

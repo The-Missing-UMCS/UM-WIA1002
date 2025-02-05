@@ -1,148 +1,181 @@
 package com.umwia1002.solution.lab.version2.lab5.Q2;
 
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.Scanner;
+import com.umwia1002.solution.util.TimerUtil;
+
 import java.io.File;
+import java.util.*;
+
+import static com.umwia1002.solution.util.FileUtil.*;
 
 public class Main {
-	public static void main(String[] args) {
-		long longWait = 1000;
-		long shortWait = 700;
-		String[] infixArray, postfixArray;
-		try (Scanner sc = new Scanner(new File("./src/Lab5/Q2/question.txt"))) {
-			while(sc.hasNextLine()) {
-				System.out.print("Enter infix expression : ");
-				Thread.sleep(longWait);
-				String expression = sc.nextLine();
-				System.out.println(expression);
-				
-				// b.
-				Thread.sleep(shortWait);
-				infixArray = toInfixArray(expression);
-				System.out.print("The infix expression is: ");
-				Thread.sleep(shortWait);
-				System.out.println(String.join(" ", infixArray));
-				
-				// c.
-				Thread.sleep(shortWait);
-				postfixArray = infixToPostfix(infixArray);
-				System.out.print("The postfix expression is: ");
-				Thread.sleep(shortWait);
-				System.out.println(String.join(" ", postfixArray));
-				
-				// d.
-				Thread.sleep(shortWait);
-				System.out.print("The result is: ");
-				Thread.sleep(shortWait);
-				System.out.println(evaluatePostfix(postfixArray) + "\n");
-				
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+    public static void main(String[] args) throws Exception {
+        final String file = chain(LAB_V2_LAB5, IO_FILES, "question.txt");
+        try (Scanner sc = new Scanner(new File(file))) {
+            while (sc.hasNextLine()) {
+                // a.
+                String infixExpression = sc.nextLine().trim();
+                if (infixExpression.isEmpty()) {
+                    System.out.println("Empty expression encountered.");
+                    continue;
+                }
+                System.out.printf("The infix expression is: %s%n", infixExpression);
 
-	public static String[] toInfixArray(String str) {
-		String[] arr = str.split("\\s");
-		for (int i = 0; i < arr.length; i++)
-			if (!isInteger(arr[i]))
-				arr[i] = symbolConverter(arr[i]);
-		return arr;
-	}
-	
-	public static int evaluatePostfix(String[] postfixArray) {
-		Stack<Integer> stack = new Stack<>();
-		for(String exp : postfixArray) {
-			if(isInteger(exp))
-				stack.push(Integer.parseInt(exp));
-			else
-				stack.push(operation(stack.pop(), stack.pop(), exp));
-		}
-		
-		return stack.pop();
-	}
+                // b.
+                String[] infixTokens = tokenizeInfixExpression(infixExpression);
+                System.out.printf("The infix tokens are: %s%n", String.join(" ", infixTokens));
 
-	public static String[] infixToPostfix(String[] infixArray) {
-		ArrayList<String> postArr = new ArrayList<>();
-		Stack<String> stack = new Stack<>();
+                // c.
+                String[] postfixTokens = infixToPostfix(infixTokens);
+                System.out.printf("The postfix expression is : %s%n", String.join(" ", postfixTokens));
 
-		for (String exp : infixArray) {
-			if (isInteger(exp)) {
-				postArr.add(exp); // If it is an operand, output
-			} else {
-				if (exp.equals("(")) { 
-					stack.push(exp); // When ( is found, push.
-				}
-				
-				// When ) is found, pop until the matching (.
-				else if (exp.equals(")")) {
-					String operator;
-					while (!(operator = stack.pop()).equals("("))
-						postArr.add(operator);
-				}
+                // d.
+                try {
+                    int result = evaluatePostfix(postfixTokens);
+                    System.out.printf("The result is: %s%n%n", result);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Error evaluating postfix expression: " + e.getMessage());
+                }
+            }
+        }
+    }
 
-				// pop until the stacks has a lower precedence operator
-				else {
-					while (!stack.empty() && !isValidSequence(stack.peek(), exp))
-						postArr.add(stack.pop());
-					stack.push(exp); // then, push the new operator
-				}
-			}
-		}
+    /**
+     * Tokenizes the given infix expression into an array of strings.
+     *
+     * @param expression The infix expression.
+     * @return Array of tokens.
+     */
+    public static String[] tokenizeInfixExpression(String expression) {
+        return Arrays.stream(expression.split("\\s+"))
+            .map(token -> isNumeric(token) ? token : toSymbol(token))
+            .toArray(String[]::new);
+    }
 
-		// When reach the end of input, pop until the stacks is empty.
-		while (!stack.empty())
-			postArr.add(stack.pop());
+    /**
+     * Converts an infix expression to postfix notation.
+     *
+     * @param infixTokens Array of infix tokens.
+     * @return Array of postfix tokens.
+     */
+    public static String[] infixToPostfix(String[] infixTokens) {
+        List<String> postfix = new ArrayList<>();
+        Deque<String> operatorStack = new ArrayDeque<>();
 
-		return postArr.toArray(new String[postArr.size()]);
-	}
-	
-	public static int operation(int opr2, int opr1, String operator) {
-		switch (operator) {
-		case "+" : return opr1 + opr2;
-		case "-" : return opr1 - opr2;
-		case "*" : return opr1 * opr2;
-		case "/" : return opr1 / opr2;
-		case "%" : return opr1 % opr2;
-		default  : return 0;
-		}
-	}
+        for (String token : infixTokens) {
+            if (isNumeric(token)) {
+                postfix.add(token);
+            } else if ("(".equals(token)) {
+                operatorStack.push(token);
+            } else if (")".equals(token)) {
+                while (!operatorStack.isEmpty() && !"(".equals(operatorStack.peek())) {
+                    postfix.add(operatorStack.pop());
+                }
+                operatorStack.pop(); // Remove "(" from stack
+            } else {
+                while (!operatorStack.isEmpty() && precedence(operatorStack.peek()) >= precedence(token)) {
+                    postfix.add(operatorStack.pop());
+                }
+                operatorStack.push(token);
+            }
+        }
 
-	public static String symbolConverter(String operator) {
-		switch (operator) {
-		case "add": return "+";
-		case "sub": return "-";
-		case "mul": return "*";
-		case "div": return "/";
-		case "mod": return "%";
-		case "ob": 	return "(";
-		case "cb": 	return ")";
-		default: 	return " ";
-		}
-	}
+        while (!operatorStack.isEmpty()) {
+            if ("(".equals(operatorStack.peek())) {
+                throw new IllegalArgumentException("Mismatched parentheses.");
+            }
+            postfix.add(operatorStack.pop());
+        }
 
-	public static boolean isInteger(String operand) {
-		try {
-			Integer.parseInt(operand);
-			return true;
-		} catch (Exception ex) {
-			return false;
-		}
-	}
+        return postfix.toArray(String[]::new);
+    }
 
-	public static int precedence(String operator) {
-		switch (operator) {
-		case "+" : return 1;
-		case "-" : return 1;
-		case "/" : return 2;
-		case "*" : return 2;
-		case "%" : return 2;
-		default:  return 0;
-		}
-	}
+    /**
+     * Evaluates a postfix expression.
+     *
+     * @param postfixTokens Array of postfix tokens.
+     * @return Evaluation result.
+     */
+    public static int evaluatePostfix(String[] postfixTokens) {
+        Deque<Integer> operandStack = new ArrayDeque<>();
 
-	public static boolean isValidSequence(String inside, String outside) {
-		return precedence(outside) >= precedence(inside);
-	}
+        for (String token : postfixTokens) {
+            if (isNumeric(token)) {
+                operandStack.push(Integer.parseInt(token));
+            } else {
+                if (operandStack.size() < 2) {
+                    throw new IllegalArgumentException("Invalid postfix expression.");
+                }
+                int operand2 = operandStack.pop();
+                int operand1 = operandStack.pop();
+                int result = performOperation(operand1, operand2, token);
+                operandStack.push(result);
+            }
+        }
+
+        return operandStack.pop();
+    }
+
+    /**
+     * Performs a mathematical operation on two operands.
+     *
+     * @param operand1 The first operand.
+     * @param operand2 The second operand.
+     * @param operator The operator.
+     * @return Result of the operation.
+     */
+    public static int performOperation(int operand1, int operand2, String operator) {
+        return switch (operator) {
+            case "+" -> operand1 + operand2;
+            case "-" -> operand1 - operand2;
+            case "*" -> operand1 * operand2;
+            case "/" -> {
+                if (operand2 == 0) throw new ArithmeticException("Division by zero");
+                yield operand1 / operand2;
+            }
+            case "%" -> operand1 % operand2;
+            default -> throw new IllegalArgumentException("Invalid operator: " + operator);
+        };
+    }
+
+    public static String toSymbol(String operator) {
+        return switch (operator) {
+            case "add" -> "+";
+            case "sub" -> "-";
+            case "mul" -> "*";
+            case "div" -> "/";
+            case "mod" -> "%";
+            case "ob" -> "(";
+            case "cb" -> ")";
+            default -> " ";
+        };
+    }
+
+    /**
+     * Checks if a string is numeric.
+     *
+     * @param str The string to check.
+     * @return True if numeric, false otherwise.
+     */
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Determines the precedence of an operator.
+     *
+     * @param operator The operator.
+     * @return Precedence value.
+     */
+    public static int precedence(String operator) {
+        return switch (operator) {
+            case "+", "-" -> 1;
+            case "*", "/", "%" -> 2;
+            default -> 0;
+        };
+    }
 }
