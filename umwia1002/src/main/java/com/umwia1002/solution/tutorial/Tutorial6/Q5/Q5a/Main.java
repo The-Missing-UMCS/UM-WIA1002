@@ -1,4 +1,7 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q5.Q5b;
+package com.umwia1002.solution.tutorial.Tutorial6.Q5.Q5a;
+
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Stack;
 
@@ -11,18 +14,18 @@ public class Main {
     }
 
     private static String postfixToInfix(String exp) {
-        Stack<ExpNode> expressions = new Stack<>();
+        Stack<Node> expressions = new Stack<>();
 
         for (String ch : exp.trim().split("\\s+")) {
             if (isInteger(ch)) {
-                expressions.push(new ExpNode(ch));
+                expressions.push(new Node(ch));
             } else {
                 if (expressions.size() < 2) {
                     throw new IllegalArgumentException("Invalid postfix expression");
                 }
-                ExpNode right = expressions.pop();
-                ExpNode left = expressions.pop();
-                expressions.push(new ExpNode(ch, left, right));
+                Node right = expressions.pop();
+                Node left = expressions.pop();
+                expressions.push(new Node(ch, left, right));
             }
         }
 
@@ -38,6 +41,43 @@ public class Main {
             return true;
         } catch (NumberFormatException ex) {
             return false;
+        }
+    }
+
+    @AllArgsConstructor
+    @RequiredArgsConstructor
+    static class Node {
+        private final String val;
+        private Node left;
+        private Node right;
+
+        private static int precedence(String val) {
+            return switch (val) {
+                case "+", "-" -> 1;
+                case "*", "/", "%" -> 2;
+                default -> 0;
+            };
+        }
+
+        @Override
+        public String toString() {
+            String leftExp = left == null
+                ? ""
+                : left.isOperator() && precedence(val) > precedence(left.val)
+                    ? String.format("(%s)", left)
+                    : left.toString();
+
+            String rightExp = right == null
+                ? ""
+                : right.isOperator() && precedence(val) > precedence(right.val)
+                    ? String.format("(%s)", right)
+                    : right.toString();
+
+            return String.format("%s%s%s", leftExp, val, rightExp);
+        }
+
+        private boolean isOperator() {
+            return left != null && right != null;
         }
     }
 }

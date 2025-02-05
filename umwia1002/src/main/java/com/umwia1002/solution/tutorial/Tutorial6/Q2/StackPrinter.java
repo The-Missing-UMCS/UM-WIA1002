@@ -5,12 +5,14 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 import java.util.Stack;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.apache.commons.lang3.StringUtils.SPACE;
 
-public class StackHelper {
+public class StackPrinter {
+    private static final int STACK_LEVEL = 3;
     private static final int STACK_WIDTH = 10;
-    private static final int SPACE_BETWEEN_STACK = 5;
+    private static final int SPACE_BETWEEN_STACKS = 5;
 
     @SafeVarargs
     public final void printStack(Stack<String>... stacks) {
@@ -18,55 +20,50 @@ public class StackHelper {
     }
 
     public String generateStack(Stack<String>[] stacks) {
-        int size = Arrays.stream(stacks)
-            .mapToInt(Stack::size)
-            .max()
-            .orElseThrow();
-
         StringBuilder sb = new StringBuilder();
 
-        for (int i = size - 1; i >= 0; i--) {
+        for (int i = STACK_LEVEL - 1; i >= 0; i--) {
+            // 1. Append the stack content
             for (Stack<String> stack : stacks) {
-                sb.append(SPACE.repeat(SPACE_BETWEEN_STACK))
-                    .append(stack.size() >= i
-                        ? generateFilledLevel(stack.get(i))
-                        : generateEmptyLevel());
+                sb.append(SPACE.repeat(SPACE_BETWEEN_STACKS))
+                    .append(stack.size() > i
+                        ? generateStackLevel(stack.get(i))
+                        : generateEmptyStackLevel());
             }
+
+            // 2. Append the stack bottom
             sb.append(System.lineSeparator())
-                .append(generateBottomStack())
+                .append(generateStackBottom(stacks.length))
                 .append(System.lineSeparator());
         }
 
-        // Append the label of each stacks
-        return sb.append(generateLabel(new String[]{"s1", "s2", "s3"}))
+        // 3. Append the stack labels
+        return sb.append(generateStackLabels(new String[]{"s1", "s2", "s3"}))
             .append(System.lineSeparator())
             .toString();
     }
 
-    public String generateBottomStack() {
-        StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < 3; j++) {
-            sb.append(" ".repeat(SPACE_BETWEEN_STACK))
-                .append(generateLevel("=".repeat(STACK_WIDTH)));
-        }
-        return sb.toString();
+    private String generateStackLevel(String value) {
+        return formatLevel(value);
     }
 
-    private String generateEmptyLevel() {
-        return generateLevel(SPACE);
+    private String generateEmptyStackLevel() {
+        return formatLevel(" ");
     }
 
-    private String generateFilledLevel(String value) {
-        return generateLevel(value);
+    private String formatLevel(String content) {
+        return String.format("|%s|", StringUtils.center(content, STACK_WIDTH));
     }
 
-    private String generateLevel(String value) {
-        return String.format("|%s|", StringUtils.center(value, STACK_WIDTH));
+    private String generateStackBottom(int numOfStacks) {
+        return IntStream.range(0, numOfStacks)
+            .mapToObj(_ -> " ".repeat(SPACE_BETWEEN_STACKS) + formatLevel("=".repeat(STACK_WIDTH)))
+            .collect(Collectors.joining());
     }
 
-    private String generateLabel(String[] labels) {
+    private String generateStackLabels(String[] labels) {
         return Arrays.stream(labels)
-            .map(label -> String.format("%s%s", SPACE.repeat(SPACE_BETWEEN_STACK), StringUtils.center(label, STACK_WIDTH)))
+            .map(label -> String.format("%s%s", SPACE.repeat(SPACE_BETWEEN_STACKS), StringUtils.center(label, STACK_WIDTH + 2)))
             .collect(Collectors.joining());
     }
 }

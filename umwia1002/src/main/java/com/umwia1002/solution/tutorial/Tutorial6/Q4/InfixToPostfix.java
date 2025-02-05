@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-public class Q4_InfixToPostfix {
+public class InfixToPostfix {
     public static void main(String[] args) {
         // Should return 4 3 + 5 *
         System.out.println(infixToPostfix("( 4 + 3 ) * 5"));
@@ -16,62 +16,6 @@ public class Q4_InfixToPostfix {
         System.out.println(infixToPostfix("( 4 + 5 ) * 3 / ( 5 - 3 )"));
     }
 
-    /**
-     * Converts an infix expression to a postfix expression.
-     *
-     * <p>
-     * In an infix expression, brackets indicate the order of operations. For example,
-     * in the expression {@code (4 + 3) * 5}, we know that {@code 4 + 3} should be calculated first
-     * before multiplying by {@code 5}.
-     * </p>
-     *
-     * <p>
-     * However, in a postfix expression, there are no brackets,
-     * and the order of operations is determined by the position of the operators.
-     * The operator appears after its operands.
-     * </p>
-     * <ul>
-     *     <li>Infix: {@code (4 + 3) * 5} → Postfix: {@code 4 3 + 5 *}</li>
-     *     <li>Infix: {@code 4 + 3 * 5} → Postfix: {@code 4 3 5 * +}</li>
-     * </ul>
-     *
-     * <p>
-     * The advantage of postfix notation is that the computer can evaluate expressions
-     * sequentially using a stack. When encountering an operator, it pops the last two
-     * values from the stack, applies the operation, and pushes the result back.
-     * For example, in {@code 4 3 5 * +}:
-     * </p>
-     * <ol>
-     *     <li>Push {@code 4} onto the stack.</li>
-     *     <li>Push {@code 3} onto the stack.</li>
-     *     <li>Push {@code 5} onto the stack.</li>
-     *     <li>Encounter {@code *}, pop {@code 3} and {@code 5}, compute {@code 3 * 5 = 15},
-     *         and push {@code 15} onto the stack.</li>
-     *     <li>Encounter {@code +}, pop {@code 4} and {@code 15}, compute {@code 4 + 15 = 19},
-     *         and push {@code 19} onto the stack.</li>
-     * </ol>
-     * <p>Final result: {@code 19}.</p>
-     *
-     * <p>
-     * <ul>
-     *     <li>Integers are added directly to the postfix expression.</li>
-     *     <li>Operators are pushed onto a stack. Before pushing, the algorithm ensures that
-     *         higher precedence operators are processed first by popping them from the stack.</li>
-     *     <li>Brackets are handled by pushing '(' onto the stack and popping operators until ')' is encountered.</li>
-     * </ul>
-
-     * Example:
-     * For the expression {@code 4 + 3 * 5 / 6}:
-     * <ul>
-     *     <li>When encountering {@code +}, the operator stack is empty, so {@code +} is pushed onto the stack.</li>
-     *     <li>When encountering {@code *}, the top of the stack ({@code +}) has lower precedence than {@code *}, so {@code *} is pushed onto the stack.</li>
-     *     <li>When encountering {@code /}, the top of the stack ({@code *}) has equal precedence to {@code /}, so {@code *} is popped and added to the postfix expression,
-     * </ul>
-     * </p>
-     *
-     * @param infixExpression the infix expression as a string
-     * @return the equivalent postfix expression as a string
-     */
     private static String infixToPostfix(String infixExpression) {
         Stack<String> operatorStack = new Stack<>();
 

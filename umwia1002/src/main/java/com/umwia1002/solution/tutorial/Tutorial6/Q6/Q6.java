@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial6;
+package com.umwia1002.solution.tutorial.Tutorial6.Q6;
 
 import java.util.Stack;
 
@@ -63,11 +63,11 @@ public class Q6 {
 	}
 	
 	private static int precedence(String ch) {
-		switch(ch) {
-		case "+", "-" : return 1;
-		case "*", "/" : return 2;
-		default: return 0;
-		}
+        return switch (ch) {
+            case "+", "-" -> 1;
+            case "*", "/" -> 2;
+            default -> 0;
+        };
 	}
 	
 	private static boolean isValidSequence(String stack, String ch) {

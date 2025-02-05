@@ -1,29 +1,46 @@
-package com.umwia1002.solution.tutorial.Tutorial6;
+package com.umwia1002.solution.tutorial.Tutorial6.Q2;
 
 import java.util.Stack;
 
-public class Q2_Simulator {	
-	public static void main(String[] args) {
-		Q2_StackHelper helper = new Q2_StackHelper();
-		Stack<String> s1 = new Stack<>();
-		Stack<String> s2 = new Stack<>();
-		Stack<String> s3 = new Stack<>();
-		s1.push("zero");
-		s1.push("one");
-		s1.push("two");
-		helper.printStack(3, s1, s2, s3);
-		
-		s2.push(s1.pop());
-		helper.printStack(3, s1, s2, s3);
-		s3.push(s1.pop());
-		helper.printStack(3, s1, s2, s3);
-		s1.pop();
-		helper.printStack(3, s1, s2, s3);
-		s1.push(s2.pop());
-		helper.printStack(3, s1, s2, s3);
-		s2.push(s3.pop());
-		helper.printStack(3, s1, s2, s3);
-		s2.push(s1.pop());
-		helper.printStack(3, s1, s2, s3);
-	}
+public class Simulator {
+    private static final StackPrinter PRINTER = new StackPrinter();
+    private static final Stack<String>[] STACKS = createStacks();
+
+    public static void main(String[] args) {
+        Stack<String> s1 = STACKS[0];
+        Stack<String> s2 = STACKS[1];
+        Stack<String> s3 = STACKS[2];
+        printStack();
+
+        s2.push(s1.pop());
+        printStack();
+
+        s3.push(s1.pop());
+        printStack();
+
+        s1.pop();
+        printStack();
+
+        s1.push(s2.pop());
+        printStack();
+
+        s2.push(s3.pop());
+        printStack();
+
+        s2.push(s1.pop());
+        printStack();
+    }
+
+    private static Stack<String>[] createStacks() {
+        @SuppressWarnings("unchecked")
+        Stack<String>[] stacks = new Stack[]{new Stack<>(), new Stack<>(), new Stack<>()};
+        stacks[0].push("zero");
+        stacks[0].push("one");
+        stacks[0].push("two");
+        return stacks;
+    }
+
+    private static void printStack() {
+        PRINTER.printStack(STACKS);
+    }
 }

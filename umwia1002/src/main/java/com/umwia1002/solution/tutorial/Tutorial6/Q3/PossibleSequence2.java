@@ -1,102 +1,140 @@
 package com.umwia1002.solution.tutorial.Tutorial6.Q3;
 
-import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class PossibleSequence {
-    public static final boolean PUSH = true;
-    public static final boolean POP = false;
-
-    public static final boolean[] MOVE = {PUSH, POP};
-    // true = push, false = pop
-    // tokens[0] is push_token, tokens[1] = pop_token;
+public class PossibleSequence2 {
+    public static final int PUSH = 0;
+    public static final int POP = 1;
 
     public static void main(String[] args) {
-        int[] tokens = {3, 0};
-        int step = 0;
-        Stack<Integer> stack = new Stack<>();
+        findAllPossibleSequences(new int[]{4, 5, 3})
+            .forEach(System.out::println);
+    }
 
-        Outer:
-        while (true) {
-            while (canPerformMoves(tokens)) {
-                boolean hasValidMove = false;
+    private static Set<Sequence> findAllPossibleSequences(int[] inputArray) {
+        // 1. Generate all possible push/pop sequences in 0 and 1
+        int sequenceLength = inputArray.length;
+        Set<int[]> pushPopOperationSequences = generatePushPopSequences(sequenceLength);
 
-                for (; step < 2 && !hasValidMove; step++) {
-                    if (isValidMove(tokens, MOVE[step])) {
-                        performMove(step, stack, tokens);
-                        hasValidMove = true;
+        // 2. Convert each sequence of operations into a "human-readable" format
+        return convertToSequences(pushPopOperationSequences, inputArray);
+    }
+
+    private static Set<int[]> generatePushPopSequences(int n) {
+        int[] pushPopCounts = {n, 0};
+        Set<int[]> allOperationSequences = new HashSet<>();
+        Stack<Integer> operationStack = new Stack<>();
+
+        performOperation(PUSH, pushPopCounts, operationStack);
+
+        int nextOperation = PUSH;
+        while (!operationStack.isEmpty()) {
+            if (canPerformAnyOperation(pushPopCounts)) {
+                boolean operationPerformed = false;
+
+                // Attempt either PUSH (0) or POP (1)
+                for (; nextOperation < 2; nextOperation++) {
+                    if (isOperationValid(pushPopCounts, nextOperation)) {
+                        performOperation(nextOperation, pushPopCounts, operationStack);
+                        operationPerformed = true;
+                        break;
                     }
                 }
 
-                if (stack.isEmpty())
-                    break Outer;
+                // Check if we reached a complete solution (all pushes and pops done)
+                boolean isFullSolution = pushPopCounts[0] == 0 && pushPopCounts[1] == 0;
+                if (isFullSolution) {
+                    int[] finalOperations = operationStack.stream().mapToInt(Integer::intValue).toArray();
+                    allOperationSequences.add(finalOperations);
+                    nextOperation = backtrack(operationStack, pushPopCounts);
+                    continue;
+                }
 
-                if (!hasValidMove)
-                    step = backtrack(stack, tokens);
-                else
-                    step = 0;
-            }
-
-            printStack(stack);
-            step = backtrack(stack, tokens);
-        }
-    }
-
-    private static void findAllPossibleSequences(int[] sequences) {
-
-    }
-
-    public static void performMove(int step, Stack<Integer> stack, int[] tokens) {
-        if (MOVE[step] == PUSH) {
-            // If current move is PUSH
-            tokens[0]--;
-            tokens[1]++;
-        } else {
-            // If the current move is POP
-            tokens[1]--;
-        }
-        stack.push(step);
-    }
-
-    public static int backtrack(Stack<Integer> stack, int[] tokens) {
-        int prev = stack.pop();
-        if (MOVE[prev]) {
-            tokens[0]++;
-            tokens[1]--;
-        } else {
-            tokens[1]++;
-        }
-        return prev + 1;
-    }
-
-    public static boolean isValidMove(int[] tokens, boolean move) {
-        return (move == PUSH && tokens[0] > 0) || (move == POP && tokens[1] > 0);
-    }
-
-    public static boolean canPerformMoves(int[] tokens) {
-        return tokens[0] > 0 || tokens[1] > 0;
-    }
-
-    public static void printStack(Stack<Integer> stack) {
-        int token = 0;
-        Stack<Integer> stack_int = new Stack<Integer>();
-        StringBuilder intBuilder = new StringBuilder();
-        StringBuilder stepBuilder = new StringBuilder();
-
-        Iterator<Integer> iterator = stack.iterator();
-        while (iterator.hasNext()) {
-            if (MOVE[iterator.next()]) {
-                stack_int.push(++token);
-                stepBuilder.append("Push " + token + " ");
-            } else {
-                int val = stack_int.pop();
-                intBuilder.append(val + " ");
-                stepBuilder.append("Pop " + val + " ");
+                if (!operationPerformed) {
+                    // Backtrack if we cannot perform further operations
+                    nextOperation = backtrack(operationStack, pushPopCounts);
+                } else {
+                    // Reset operation to push for the next iteration
+                    nextOperation = PUSH;
+                }
             }
         }
+        return allOperationSequences;
+    }
 
-        System.out.println(stepBuilder);
-        System.out.println(intBuilder);
-        System.out.println();
+    private static Set<Sequence> convertToSequences(Set<int[]> pushPopOperationSequences, int[] inputArray) {
+        return pushPopOperationSequences.stream()
+            .map(operationArray -> {
+                List<OperationNode> operationNodes = new LinkedList<>();
+                Stack<OperationNode> stack = new Stack<>();
+                int idx = 0;
+                for (int operation : operationArray) {
+                    if (operation == PUSH) {
+                        operationNodes.add(stack.push(new OperationNode(OperationNode.Move.PUSH, inputArray[idx++])));
+                    } else {
+                        operationNodes.add(new OperationNode(OperationNode.Move.POP, stack.pop().value()));
+                    }
+                }
+
+                return new Sequence(operationNodes);
+            })
+            .collect(Collectors.toSet());
+    }
+
+    private static boolean canPerformAnyOperation(int[] pushPopCounts) {
+        return pushPopCounts[0] > 0 || pushPopCounts[1] > 0;
+    }
+
+    private static boolean isOperationValid(int[] pushPopCounts, int operation) {
+        return (operation == PUSH && pushPopCounts[0] > 0) || (operation == POP && pushPopCounts[1] > 0);
+    }
+
+    private static void performOperation(int operation, int[] pushPopCounts, Stack<Integer> operationStack) {
+        if (operation == PUSH) {
+            pushPopCounts[0]--;
+            pushPopCounts[1]++;
+        } else {
+            pushPopCounts[1]--;
+        }
+        operationStack.push(operation);
+    }
+
+    private static int backtrack(Stack<Integer> operationStack, int[] pushPopCounts) {
+        int lastOperation = operationStack.pop();
+        if (lastOperation == PUSH) {
+            pushPopCounts[0]++;
+            pushPopCounts[1]--;
+        } else {
+            pushPopCounts[1]++;
+        }
+
+        return lastOperation + 1;
+    }
+
+    record Sequence(List<OperationNode> fullOperationList) {
+        @Override
+        public String toString() {
+            String operationString = fullOperationList.stream()
+                .map(node -> node.move().name() + " " + node.value())
+                .collect(Collectors.joining(", "));
+
+            String finalString = fullOperationList.stream()
+                .filter(node -> node.move() == OperationNode.Move.POP)
+                .map(OperationNode::value)
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+
+            return "[" + operationString + "] => " + "[" + finalString + "]";
+        }
+    }
+
+    /**
+     * Holds the data for a single PUSH or POP operation.
+     */
+    record OperationNode(Move move, int value) {
+        enum Move {
+            PUSH, POP
+        }
     }
 }

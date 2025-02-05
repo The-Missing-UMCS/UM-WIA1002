@@ -4,7 +4,7 @@ import lombok.Getter;
 
 import java.util.Stack;
 
-public class Q5_PostfixToInfix {
+public class Main {
     public static void main(String[] args) {
         String exp = "4 5 + 3 5 3 - / * ";
         String exp2 = "4 5 + 3 * 4 + 5 *";
@@ -13,21 +13,24 @@ public class Q5_PostfixToInfix {
     }
 
     private static String postfixToInfix(String exp) {
-        Stack<Expression> stack = new Stack<>();
+        Stack<Expression> expressionStack = new Stack<>();
 
         for (String ch : exp.trim().split("\\s+")) {
             if (isInteger(ch)) {
-                stack.push(Expression.newOperand(ch));
+                expressionStack.push(Expression.newOperand(ch));
             } else {
-                stack.push(Expression.newOperation(stack.pop(), stack.pop(), ch));
+                if(expressionStack.size() < 2) {
+                    throw new IllegalArgumentException("Invalid postfix expression");
+                }
+                expressionStack.push(Expression.newOperation(expressionStack.pop(), expressionStack.pop(), ch));
             }
         }
 
-        if (stack.size() != 1) {
+        if (expressionStack.size() != 1) {
             throw new IllegalArgumentException("Invalid postfix expression");
         }
 
-        return stack.pop().getExpression();
+        return expressionStack.pop().getExpression();
     }
 
     private static boolean isInteger(String ch) {
@@ -65,7 +68,7 @@ public class Q5_PostfixToInfix {
 
             int bracketLvl = Math.max(right.bracketLvl, left.bracketLvl) +
                 (left.operator != null && precedence(operator) > precedence(left.operator) ||
-                right.operator != null && precedence(operator) > precedence(right.operator)  ? 1 : 0);
+                    right.operator != null && precedence(operator) > precedence(right.operator) ? 1 : 0);
 
             return new Expression(operator, sb, bracketLvl);
         }
