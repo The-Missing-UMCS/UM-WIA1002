@@ -1,0 +1,156 @@
+package com.umwia1002.solution.tutorial.Tutorial6.Q4;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+
+public class Q4_InfixToPostfix {
+    public static void main(String[] args) {
+        // Should return 4 3 + 5 *
+        System.out.println(infixToPostfix("( 4 + 3 ) * 5"));
+
+        // Should return 4 3 5 * +
+        System.out.println(infixToPostfix("4 + 3 * 5"));
+
+        // Should return 4 5 + 3 * 5 3 - /
+        System.out.println(infixToPostfix("( 4 + 5 ) * 3 / ( 5 - 3 )"));
+    }
+
+    /**
+     * Converts an infix expression to a postfix expression.
+     *
+     * <p>
+     * In an infix expression, brackets indicate the order of operations. For example,
+     * in the expression {@code (4 + 3) * 5}, we know that {@code 4 + 3} should be calculated first
+     * before multiplying by {@code 5}.
+     * </p>
+     *
+     * <p>
+     * However, in a postfix expression, there are no brackets,
+     * and the order of operations is determined by the position of the operators.
+     * The operator appears after its operands.
+     * </p>
+     * <ul>
+     *     <li>Infix: {@code (4 + 3) * 5} → Postfix: {@code 4 3 + 5 *}</li>
+     *     <li>Infix: {@code 4 + 3 * 5} → Postfix: {@code 4 3 5 * +}</li>
+     * </ul>
+     *
+     * <p>
+     * The advantage of postfix notation is that the computer can evaluate expressions
+     * sequentially using a stack. When encountering an operator, it pops the last two
+     * values from the stack, applies the operation, and pushes the result back.
+     * For example, in {@code 4 3 5 * +}:
+     * </p>
+     * <ol>
+     *     <li>Push {@code 4} onto the stack.</li>
+     *     <li>Push {@code 3} onto the stack.</li>
+     *     <li>Push {@code 5} onto the stack.</li>
+     *     <li>Encounter {@code *}, pop {@code 3} and {@code 5}, compute {@code 3 * 5 = 15},
+     *         and push {@code 15} onto the stack.</li>
+     *     <li>Encounter {@code +}, pop {@code 4} and {@code 15}, compute {@code 4 + 15 = 19},
+     *         and push {@code 19} onto the stack.</li>
+     * </ol>
+     * <p>Final result: {@code 19}.</p>
+     *
+     * <p>
+     * <ul>
+     *     <li>Integers are added directly to the postfix expression.</li>
+     *     <li>Operators are pushed onto a stack. Before pushing, the algorithm ensures that
+     *         higher precedence operators are processed first by popping them from the stack.</li>
+     *     <li>Brackets are handled by pushing '(' onto the stack and popping operators until ')' is encountered.</li>
+     * </ul>
+
+     * Example:
+     * For the expression {@code 4 + 3 * 5 / 6}:
+     * <ul>
+     *     <li>When encountering {@code +}, the operator stack is empty, so {@code +} is pushed onto the stack.</li>
+     *     <li>When encountering {@code *}, the top of the stack ({@code +}) has lower precedence than {@code *}, so {@code *} is pushed onto the stack.</li>
+     *     <li>When encountering {@code /}, the top of the stack ({@code *}) has equal precedence to {@code /}, so {@code *} is popped and added to the postfix expression,
+     * </ul>
+     * </p>
+     *
+     * @param infixExpression the infix expression as a string
+     * @return the equivalent postfix expression as a string
+     */
+    private static String infixToPostfix(String infixExpression) {
+        Stack<String> operatorStack = new Stack<>();
+
+        // Option 1: StringBuilder
+        //  - Use StringBuilder instead of String.
+        //  - StringBuilder is better because it avoids creating a new String object each time we add a character.
+        //  - When we append a character to a String, a new object is created, which is inefficient and uses more memory.
+        //  - In short, use StringBuilder when appending many characters.
+        // Option 2: LinkedList
+        //  - Use LinkedList to take advantage of the String.join() method.
+        //  - Use LinkedList instead of ArrayList because we mainly use the add() methods.
+        List<String> postfix = new LinkedList<>();
+
+        // .trim() removes leading and trailing whitespaces
+        //  e.g. "  4 + 3  " -> "4 + 3"
+        //  e.g. "  4 - 3  " -> "4 - 3"
+        //
+        // .split("(\\s)+") splits the string by one or more whitespaces
+        // 	e.g. "4 + 3" -> ["4", "+", "3"]
+        // 	e.g. "4 -     3" -> ["4", "-", "3"]
+        for (String ch : infixExpression.trim().split("(\\s)+")) {
+            if (isInteger(ch)) {
+                postfix.add(ch);
+            } else {
+                // We use .equals() instead of == to compare the values of the strings.
+                // Using == checks the memory references, which usually returns false for different string objects.
+                // Also, we write "(".equals(ch) instead of ch.equals("(") to avoid a NullPointerException if ch is null.
+                // Although ch cannot be null in this case, it is a good practice to write it this way.
+                if ("(".equals(ch)) {
+                    operatorStack.push(ch);
+                } else if (")".equals(ch)) {
+                    // stack.peek() returns the top element of the stack without removing it
+                    while (!"(".equals(operatorStack.peek())) {
+                        postfix.add(operatorStack.pop());
+                    }
+                    // To remove the "(" from the stack
+                    operatorStack.pop();
+                } else {
+                    // 1. If the stack is empty, push the operator onto the stack, regardless of precedence.
+                    //
+                    // 2. If the stack is not empty and the current operator has higher precedence than the one on top of the stack,
+                    //    push it onto the stack since it takes priority.
+                    //
+                    // 3. If the current operator has lower precedence, pop operators from the stack
+                    //    until the top operator has lower precedence than the current one.
+                    //    This ensures that operators with higher precedence are processed first.
+
+                    while (!operatorStack.isEmpty() && precedence(ch) <= precedence(operatorStack.peek())) {
+                        postfix.add(operatorStack.pop());
+                    }
+                    operatorStack.push(ch);
+                }
+            }
+        }
+
+        while (!operatorStack.isEmpty()) {
+            postfix.add(operatorStack.pop());
+        }
+
+        // String.join(" ") concatenates the elements of the postfix list with a space between each element
+        // e.g. String.join(" ", ["4", "3", "+", "5", "*"]) -> "4 3 + 5 *"
+        // e.g. String.join(" ", ["4", "3", "5", "*", "+"]) -> "4 3 5 * +"
+        return String.join(" ", postfix);
+    }
+
+    public static boolean isInteger(String symbol) {
+        try {
+            Integer.parseInt(symbol);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    public static int precedence(String opr) {
+        return switch (opr) {
+            case "+", "-" -> 1;
+            case "*", "/" -> 2;
+            default -> 0;
+        };
+    }
+}
