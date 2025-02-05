@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q6;
+package com.umwia1002.solution.tutorial.tutorial6.Q6;
 
 import java.util.Stack;
 

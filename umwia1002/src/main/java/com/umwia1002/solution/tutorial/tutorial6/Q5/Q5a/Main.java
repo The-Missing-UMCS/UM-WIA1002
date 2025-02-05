@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q5.Q5a;
+package com.umwia1002.solution.tutorial.tutorial6.Q5.Q5a;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;

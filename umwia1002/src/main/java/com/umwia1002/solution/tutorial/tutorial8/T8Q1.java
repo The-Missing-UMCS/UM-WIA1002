@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial8;
+package com.umwia1002.solution.tutorial.tutorial8;
 
 public class T8Q1 {
 	/*

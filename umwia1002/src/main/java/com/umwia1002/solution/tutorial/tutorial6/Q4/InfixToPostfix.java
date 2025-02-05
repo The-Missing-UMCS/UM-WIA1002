@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q4;
+package com.umwia1002.solution.tutorial.tutorial6.Q4;
 
 import java.util.LinkedList;
 import java.util.List;

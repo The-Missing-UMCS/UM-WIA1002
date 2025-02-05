@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial7b;
+package com.umwia1002.solution.tutorial.tutorial7.tutorial7b;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -25,7 +25,7 @@ public class T7bQ4 {
 class PriorityQueue2 {
 	public static void main(String... args) {
 		PriorityQueueComparator pqc = new PriorityQueueComparator();
-		PriorityQueue<String> pq = new PriorityQueue<String>(5, pqc);
+		PriorityQueue<String> pq = new PriorityQueue<>(5, pqc);
 		pq.add("Jason");
 		pq.add("Ali");
 		pq.add("Muhamad");

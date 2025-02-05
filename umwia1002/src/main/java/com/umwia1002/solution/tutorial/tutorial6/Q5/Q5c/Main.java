@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q5.Q5c;
+package com.umwia1002.solution.tutorial.tutorial6.Q5.Q5c;
 
 import lombok.Getter;
 

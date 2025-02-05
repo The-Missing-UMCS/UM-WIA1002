@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q2;
+package com.umwia1002.solution.tutorial.tutorial6.Q2;
 
 import org.apache.commons.lang3.StringUtils;
 

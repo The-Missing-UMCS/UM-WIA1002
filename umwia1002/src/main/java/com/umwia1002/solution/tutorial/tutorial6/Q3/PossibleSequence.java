@@ -1,6 +1,5 @@
-package com.umwia1002.solution.tutorial.Tutorial6.Q3;
+package com.umwia1002.solution.tutorial.tutorial6.Q3;
 
-import java.util.Iterator;
 import java.util.Stack;
 
 public class PossibleSequence {

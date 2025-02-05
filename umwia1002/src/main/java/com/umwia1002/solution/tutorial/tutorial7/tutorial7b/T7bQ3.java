@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial7b;
+package com.umwia1002.solution.tutorial.tutorial7.tutorial7b;
 
 import java.util.*;
 
@@ -39,22 +39,16 @@ public class T7bQ3 {
 		
 		System.out.println("peek() gives us: " + pQueue.peek()); 
 		
-		System.out.println("The queue elements:");  
-		Iterator<String> itr = pQueue.iterator();
-		while (itr.hasNext())
-			System.out.println(itr.next()); 
+		System.out.println("The queue elements:");
+        for (String s : pQueue) System.out.println(s);
 		
 		pQueue.poll();
 		System.out.println("After poll():"); // (c)
-		Iterator<String> itr2 = pQueue.iterator();
-		while (itr2.hasNext())
-			System.out.println(itr2.next()); // (c)
+        for (String s : pQueue) System.out.println(s); // (c)
 		
 		pQueue.remove("Java");
 		System.out.println("After remove():"); // (d)
-		Iterator<String> itr3 = pQueue.iterator();
-		while (itr3.hasNext())
-			System.out.println(itr3.next()); // (d)
+        for (String s : pQueue) System.out.println(s); // (d)
 		
 		boolean b = pQueue.contains("Ruby");
 		System.out.println("Priority queue contains Ruby or not?: " + b); // (e)
@@ -62,7 +56,6 @@ public class T7bQ3 {
 		
 		
 		System.out.println("Value in array: "); // (f)
-		for (int i = 0; i < arr.length; i++)
-			System.out.println("Value: " + arr[i].toString()); // (f)
+        for (Object object : arr) System.out.println("Value: " + object.toString()); // (f)
 	}
 }

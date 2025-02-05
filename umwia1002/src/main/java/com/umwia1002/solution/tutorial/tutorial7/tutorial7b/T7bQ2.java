@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial7b;
+package com.umwia1002.solution.tutorial.tutorial7.tutorial7b;
 
 public class T7bQ2 {
 	//	1. Bus Queue
