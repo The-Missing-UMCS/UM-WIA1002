@@ -3,6 +3,7 @@ package com.umwia1002.solution.tutorial.Tutorial6.Q3;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 public class PossibleSequence2 {
     public static final int PUSH = 0;
     public static final int POP = 1;
@@ -12,6 +13,14 @@ public class PossibleSequence2 {
             .forEach(System.out::println);
     }
 
+    /**
+     * Finds all possible sequences of push and pop operations for the given input array.
+     * Each valid sequence preserves the stack-based constraints (i.e., no pop is allowed
+     * if there are no elements currently pushed to the stack).
+     *
+     * @param inputArray the array of integers for which to generate push/pop sequences
+     * @return a set of {@link Sequence} objects, each representing a unique valid push-pop order
+     */
     private static Set<Sequence> findAllPossibleSequences(int[] inputArray) {
         // 1. Generate all possible push/pop sequences in 0 and 1
         int sequenceLength = inputArray.length;
