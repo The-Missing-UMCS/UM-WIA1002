@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q3;
+package com.umwia1002.solution.lab.version1.lab1.L1Q3.l1q3b;
 
 import lombok.Getter;
 
@@ -8,11 +8,15 @@ import java.time.LocalDate;
 
 @Getter
 public class Account {
-    private static BigDecimal annualInterestRate = BigDecimal.ZERO; // Use BigDecimal for rates
+    private BigDecimal annualInterestRate = BigDecimal.ZERO; // Use BigDecimal for rates
 
     private final int id;
     private final LocalDate dateCreated;
     private BigDecimal balance;
+
+    public Account() {
+        this(0, 0);
+    }
 
     public Account(int id, double balance) {
         this.id = id;
@@ -20,16 +24,18 @@ public class Account {
         this.dateCreated = LocalDate.now();
     }
 
-    public static void setAnnualInterestRate(double annualInterestRate) {
-        Account.annualInterestRate = BigDecimal.valueOf(annualInterestRate).setScale(2, RoundingMode.HALF_UP);
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = BigDecimal.valueOf(annualInterestRate)
+            .setScale(2, RoundingMode.HALF_UP);
     }
 
-    public static BigDecimal getMonthlyInterestRate() {
-        return annualInterestRate.divide(BigDecimal.valueOf(12), 6, RoundingMode.HALF_UP);
+    public BigDecimal getMonthlyInterestRate() {
+        return this.annualInterestRate.divide(BigDecimal.valueOf(12), 6, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getMonthlyInterest() {
-        return getMonthlyInterestRate().divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP).multiply(this.balance).setScale(2, RoundingMode.HALF_UP);
+        return getMonthlyInterestRate().divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP)
+            .multiply(this.balance).setScale(2, RoundingMode.HALF_UP);
     }
 
     public boolean withdraw(double amount) {

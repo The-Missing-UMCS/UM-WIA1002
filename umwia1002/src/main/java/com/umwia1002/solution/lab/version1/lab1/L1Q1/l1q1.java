@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import static com.umwia1002.solution.util.FileUtil.*;
 
-public class ReadMyLetter_22004833 {
+public class l1q1 {
     private static final String FILE_PATH = chain(LAB_V1_LAB1, IO_FILES, "ZhiYang_22004833.txt");
 
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class ReadMyLetter_22004833 {
             // 1. Get the  user input
             StringBuilder secondPart = new StringBuilder();
 
-            secondPart.append(System.lineSeparator())
+            secondPart.append(System.lineSeparator()) // \n
                 .append(System.lineSeparator())
                 .append(new SimpleDateFormat("EEEE, d MMMM yyyy").format(new Date()))
                 .append(System.lineSeparator());

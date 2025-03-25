@@ -10,11 +10,11 @@ import java.util.Objects;
 import static com.umwia1002.solution.util.ConsoleUtil.logRed;
 import static com.umwia1002.solution.util.FileUtil.*;
 
-public class Main {
+public class l1q2b {
     private static final String FOLDER = chain(LAB_V1_LAB1, IO_FILES, "L1Q2");
 
     public static void main(String[] args) throws Exception {
-        getFiles().forEach(Main::printFile);
+        getFiles().forEach(l1q2b::printFile);
     }
 
     private static void printFile(File file) {
@@ -44,7 +44,7 @@ public class Main {
 
     private static long countCharacters(String content) {
         return content.chars()
-            .filter(Character::isLetterOrDigit)
+            .filter(ch -> Character.isLetterOrDigit(ch) || ch == '.')
             .count();
     }
 }

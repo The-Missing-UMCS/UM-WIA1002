@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q4;
+package com.umwia1002.solution.lab.version1.lab1.L1Q4.l1q4b;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

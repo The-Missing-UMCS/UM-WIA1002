@@ -1,6 +1,6 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q4;
+package com.umwia1002.solution.lab.version1.lab1.L1Q4.l1q4b;
 
-import com.umwia1002.solution.lab.version1.lab1.L1Q3.Account;
+import com.umwia1002.solution.lab.version1.lab1.L1Q3.l1q3b.Account;
 import lombok.Getter;
 
 import java.util.ArrayList;
