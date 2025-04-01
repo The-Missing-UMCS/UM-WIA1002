@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab2.L2Q5;
+package com.umwia1002.solution.lab.version1.lab2.L2Q5.l2q5b;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

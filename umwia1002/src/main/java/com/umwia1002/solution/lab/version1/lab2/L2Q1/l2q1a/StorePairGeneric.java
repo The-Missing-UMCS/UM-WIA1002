@@ -1,13 +1,29 @@
-package com.umwia1002.solution.lab.version1.lab2.L2Q1;
+package com.umwia1002.solution.lab.version1.lab2.L2Q1.l2q1a;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@Getter
-@RequiredArgsConstructor
 public class StorePairGeneric<T extends Comparable<T>> implements Comparable<StorePairGeneric<T>> {
-    private final T first;
-    private final T second;
+    private T first;
+    private T second;
+
+    public StorePairGeneric(T first, T second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public T getSecond() {
+        return second;
+    }
+
+    public void setPair(T first, T second) {
+        this.first = first;
+        this.second = second;
+    }
 
     @Override
     public String toString() {

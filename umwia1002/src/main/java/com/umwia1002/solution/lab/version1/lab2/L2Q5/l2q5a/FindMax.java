@@ -1,8 +1,8 @@
-package com.umwia1002.solution.lab.version1.lab2.L2Q5;
+package com.umwia1002.solution.lab.version1.lab2.L2Q5.l2q5a;
 
 public class FindMax {
 	public static <E extends Comparable<E>> E max(E[] list) {
-		if(list == null)
+		if(list == null || list.length == 0)
 			return null;
 		
 		E max = list[0];

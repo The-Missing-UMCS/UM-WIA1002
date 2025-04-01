@@ -7,12 +7,17 @@ public class MinMaxTwoDArray {
         if (list == null)
             return null;
 
-        E min = list[0][0];
-        for (E[] row : list)
-            for (E item : row)
-                if (item.compareTo(min) < 0)
+        E min = null;
+        for (E[] row : list) {
+            if (row == null) {
+                continue;
+            }
+            for (E item : row) {
+                if (item != null && (min == null || item.compareTo(min) < 0)) {
                     min = item;
-
+                }
+            }
+        }
         return min;
     }
 
@@ -20,12 +25,17 @@ public class MinMaxTwoDArray {
         if (list == null)
             return null;
 
-        E max = list[0][0];
-        for (E[] row : list)
-            for (E item : row)
-                if (item.compareTo(max) > 0)
+        E max = null;
+        for (E[] row : list) {
+            if (row == null) {
+                continue;
+            }
+            for (E item : row) {
+                if (item != null && (max == null || item.compareTo(max) > 0)) {
                     max = item;
-
+                }
+            }
+        }
         return max;
     }
 

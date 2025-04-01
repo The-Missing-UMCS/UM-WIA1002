@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab2.L2Q2;
+package com.umwia1002.solution.lab.version1.lab2.L2Q2.l2q2b;
 
 public class Main {
     public static void main(String[] args) {
