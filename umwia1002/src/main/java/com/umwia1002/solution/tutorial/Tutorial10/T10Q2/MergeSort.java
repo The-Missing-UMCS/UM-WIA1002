@@ -1,8 +1,8 @@
-package com.umwia1002.solution.tutorial.Tutorial10.T10Q2;
+package com.umwia1002.solution.tutorial.tutorial10.T10Q2;
 
 public class MergeSort extends SortingAlgorithm {
-	MergeSort() {
-		super("Merge Sort");
+	public String name() {
+		return "Merge Sort";
 	}
 
 	@Override

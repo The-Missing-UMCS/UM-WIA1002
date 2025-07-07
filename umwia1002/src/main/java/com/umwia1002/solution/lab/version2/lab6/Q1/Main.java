@@ -14,6 +14,7 @@ public class Main {
         String transaction = "D 400 | W 300 | W 700 | D 200 | D 450 | W 120";
         System.out.println("Enter transactions : " + transaction);
         readTransaction(transactions, transaction);
+        System.out.println(transactions);
         printTransaction(transactions);
 
         // 2. Process the transaction based on the type (D - Deposit, W - Withdraw)

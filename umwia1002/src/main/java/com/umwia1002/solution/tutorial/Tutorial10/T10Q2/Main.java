@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial10.T10Q2;
+package com.umwia1002.solution.tutorial.tutorial10.T10Q2;
 
 public class Main {
 	public static void main(String[] args) {

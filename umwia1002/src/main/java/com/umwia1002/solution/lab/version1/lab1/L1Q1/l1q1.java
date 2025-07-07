@@ -1,5 +1,7 @@
 package com.umwia1002.solution.lab.version1.lab1.L1Q1;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -14,8 +16,10 @@ public class l1q1 {
     private static final String FILE_PATH = chain(LAB_V1_LAB1, IO_FILES, "ZhiYang_22004833.txt");
 
     public static void main(String[] args) {
+
+
         try (Scanner scanner = new Scanner(System.in);
-             PrintWriter writer = new PrintWriter(new FileOutputStream(FILE_PATH, true));) {
+             PrintWriter writer = new PrintWriter(new FileOutputStream(FILE_PATH, true))) {
             // 1. Get the  user input
             StringBuilder secondPart = new StringBuilder();
 
@@ -35,9 +39,21 @@ public class l1q1 {
             writer.flush();
 
             // 3. Read the content of the file
-            System.out.println(Files.readString(Path.of(FILE_PATH)));
+            System.out.println(readAsString(new File(FILE_PATH)));
         } catch (Exception ex) {
             System.out.println("Error reading file: " + FILE_PATH);
+        }
+    }
+
+    private static String readAsString(File file) {
+        try (Scanner scanner = new Scanner(new FileInputStream(file))) {
+            StringBuilder content = new StringBuilder();
+            while (scanner.hasNextLine()) {
+                content.append(scanner.nextLine()).append(System.lineSeparator());
+            }
+            return content.toString();
+        } catch (Exception ex) {
+            return null;
         }
     }
 }

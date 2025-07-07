@@ -1,10 +1,11 @@
-package com.umwia1002.solution.tutorial.Tutorial10.T10Q2;
+package com.umwia1002.solution.tutorial.tutorial10.T10Q2;
 
 import java.util.Arrays;
 
 public class InsertionSort extends SortingAlgorithm {
-	InsertionSort() {
-		super("Insertion Sort");
+
+	public String name() {
+		return "Insertion Sort";
 	}
 	
 	@Override

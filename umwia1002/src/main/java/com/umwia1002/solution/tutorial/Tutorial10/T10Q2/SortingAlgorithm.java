@@ -1,23 +1,16 @@
-package com.umwia1002.solution.tutorial.Tutorial10.T10Q2;
+package com.umwia1002.solution.tutorial.tutorial10.T10Q2;
 
 import java.util.Arrays;
 import java.util.Random;
 
 public abstract class SortingAlgorithm {
+	private static final Random RANDOM = new Random();
 	protected static final int MAIN_DECOR = 9;
 	protected static final int SUB_DECOR = 15;
-	
-	String name;
-	Random rand;
-
-	SortingAlgorithm(String name) {
-		this.name = name;
-		this.rand = new Random();
-	}
 
 	public void run() {
-		int[] arr = rand.ints(10, 0, 10).toArray();
-		System.out.println(name);
+		int[] arr = RANDOM.ints(10, 0, 10).toArray();
+		System.out.println(name());
 		System.out.print("Before: ");
 		System.out.println(Arrays.toString(arr));
 		System.out.println("Steps:");
@@ -26,6 +19,8 @@ public abstract class SortingAlgorithm {
 		System.out.println(Arrays.toString(arr));
 		System.out.println();
 	}
+
+	public abstract String name();
 
 	protected static void swap(int[] arr, int i, int j) {
 		int tmp = arr[i];

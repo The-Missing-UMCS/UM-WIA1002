@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.Tutorial10.T10Q1;
+package com.umwia1002.solution.tutorial.tutorial10.T10Q1.hard;
 
 public class Searching {
 	public static int linearSearch(int[] arr, int target) {

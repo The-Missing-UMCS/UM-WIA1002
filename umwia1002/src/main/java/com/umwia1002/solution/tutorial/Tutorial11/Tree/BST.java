@@ -139,8 +139,8 @@ public class BST<E extends Comparable<E>> implements Tree<E> {
 	}
 	
 	public void showTree() {
-		TreePrinter.print(this);
-//		TreePrinter.printBinaryTree(root, 0);
+//		TreePrinter.print(this);
+		TreePrinter.printBinaryTree(root, 0);
 //		TreePrinter.print("", root, false);
 	}
 	

@@ -24,6 +24,7 @@ public class Transaction {
 
     @Override
     public String toString() {
+        // Java 15
         return """
             Date: %s
             Type: %s

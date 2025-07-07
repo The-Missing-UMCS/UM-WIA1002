@@ -37,7 +37,6 @@ public class Account {
             Stock stock = stockQueue.peek();
             int shareSold = Math.min(stock.getShare(), share);
             totalGain += shareSold * (price - stock.getPrice());
-
             if (!stock.checkAndSellShare(shareSold)) {
                 stockQueue.poll();
             }

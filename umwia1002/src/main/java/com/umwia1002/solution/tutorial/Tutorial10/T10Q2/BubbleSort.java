@@ -1,15 +1,16 @@
-package com.umwia1002.solution.tutorial.Tutorial10.T10Q2;
+package com.umwia1002.solution.tutorial.tutorial10.T10Q2;
 
 import java.util.Arrays;
 
 public class BubbleSort extends SortingAlgorithm {
-	BubbleSort() {
-		super("Bubble Sort");
+
+	public String name() {
+		return "Bubble Sort";
 	}
 	
 	@Override
 	public void sort(int[] arr) {
-		boolean hasSwap = false;
+		boolean hasSwap;
 		for(int i = 0; i < arr.length; i++) {
 			hasSwap = false;
 			System.out.printf(" %3d --> %s\n", (i + 1), Arrays.toString(arr));
