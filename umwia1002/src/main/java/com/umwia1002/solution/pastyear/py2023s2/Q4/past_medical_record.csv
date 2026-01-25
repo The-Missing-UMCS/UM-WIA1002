@@ -1,0 +1,31 @@
+FirstName,LastName,Height,Weight,Occupation,Diabetic,HeartDisease,Smoking,DrinkAlcohol
+Audre,Edbert,153,107,Coil Winder,Yes,No,Yes,No
+Faye,Hora,151,60,Animator,No,No,No,Yes
+Morgana,Chris,165,70,Doctor,No,Yes,No,No
+Andree,Alica,175,80,Engineer,Yes,No,Yes,Yes
+Malinde,Giffie,160,65,Teacher,No,No,No,No
+John,Doe,180,85,Mechanic,Yes,Yes,Yes,Yes
+Jane,Doe,165,60,Designer,No,No,No,No
+Peter,Parker,170,70,Photographer,No,Yes,No,Yes
+Bruce,Wayne,190,90,CEO,No,No,No,No
+Clark,Kent,185,85,Journalist,No,No,No,No
+Tony,Stark,175,80,Engineer,Yes,Yes,Yes,Yes
+Steve,Rogers,185,85,Soldier,No,No,No,No
+Natasha,Romanoff,170,65,Spy,No,No,No,No
+Wanda,Maximoff,165,60,Mutant,No,No,No,No
+Vision,,195,100,AI,No,No,No,No
+Stephen,Strange,180,75,Doctor,No,Yes,No,No
+T'Challa,,185,85,King,No,No,No,No
+Thor,Odinson,200,100,God,No,No,No,No
+Loki,Odinson,190,90,God,No,No,No,No
+Gamora,,170,70,Assassin,No,No,No,No
+Peter,Quill,175,75,Pilot,No,No,Yes,Yes
+Drax,,190,95,Warrior,No,No,No,No
+Rocket,Raccoon,Thief,120,30,No,No,No,Yes
+Groot,,240,120,Tree,No,No,No,No
+Scott,Lang,175,70,Thief,No,No,No,No
+Hope,Van Dyne,170,60,Scientist,No,No,No,No
+Sam,Wilson,185,85,Soldier,No,No,No,No
+Bucky,Barnes,185,85,Soldier,No,No,No,No
+Carol,Danvers,175,70,Pilot,No,No,No,No
+Monica,Rambeau,170,65,Soldier,No,No,No,No
