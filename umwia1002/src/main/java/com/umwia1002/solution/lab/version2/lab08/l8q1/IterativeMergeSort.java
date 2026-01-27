@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab8.Q1;
+package com.umwia1002.solution.lab.version2.lab08.l8q1;
 
 import java.util.*;
 
