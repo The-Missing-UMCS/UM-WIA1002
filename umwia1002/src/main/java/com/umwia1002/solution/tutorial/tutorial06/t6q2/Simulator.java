@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q2;
+package com.umwia1002.solution.tutorial.tutorial06.t6q2;
 
 import java.util.Stack;
 
 public class Simulator {
+
     private static final StackPrinter PRINTER = new StackPrinter();
     private static final Stack<String>[] STACKS = createStacks();
 

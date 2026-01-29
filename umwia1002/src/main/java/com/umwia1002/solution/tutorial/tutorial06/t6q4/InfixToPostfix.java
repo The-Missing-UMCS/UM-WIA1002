@@ -1,10 +1,11 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q4;
+package com.umwia1002.solution.tutorial.tutorial06.t6q4;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
 public class InfixToPostfix {
+
     public static void main(String[] args) {
         // Should return 4 3 + 5 *
         System.out.println(infixToPostfix("( 4 + 3 ) * 5"));
@@ -63,7 +64,8 @@ public class InfixToPostfix {
                     //    until the top operator has lower precedence than the current one.
                     //    This ensures that operators with higher precedence are processed first.
 
-                    while (!operatorStack.isEmpty() && precedence(ch) <= precedence(operatorStack.peek())) {
+                    while (!operatorStack.isEmpty() && precedence(ch) <= precedence(
+                        operatorStack.peek())) {
                         postfix.add(operatorStack.pop());
                     }
                     operatorStack.push(ch);

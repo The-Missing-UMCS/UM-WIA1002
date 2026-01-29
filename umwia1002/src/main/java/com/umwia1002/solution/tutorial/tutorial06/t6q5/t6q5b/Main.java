@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q5.Q5b;
+package com.umwia1002.solution.tutorial.tutorial06.t6q5.t6q5b;
 
 import java.util.Stack;
 
 public class Main {
+
     public static void main(String[] args) {
         String exp = "4 5 + 3 5 3 - / * ";
         String exp2 = "4 5 + 3 * 4 + 5 *";

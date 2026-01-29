@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q2;
+package com.umwia1002.solution.tutorial.tutorial06.t6q2;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 import static org.apache.commons.lang3.StringUtils.SPACE;
 
 public class StackPrinter {
+
     private static final int STACK_LEVEL = 3;
     private static final int STACK_WIDTH = 10;
     private static final int SPACE_BETWEEN_STACKS = 5;
@@ -27,8 +28,8 @@ public class StackPrinter {
             for (Stack<String> stack : stacks) {
                 sb.append(SPACE.repeat(SPACE_BETWEEN_STACKS))
                     .append(stack.size() > i
-                        ? generateStackLevel(stack.get(i))
-                        : generateEmptyStackLevel());
+                            ? generateStackLevel(stack.get(i))
+                            : generateEmptyStackLevel());
             }
 
             // 2. Append the stack bottom
@@ -63,7 +64,8 @@ public class StackPrinter {
 
     private String generateStackLabels(String[] labels) {
         return Arrays.stream(labels)
-            .map(label -> String.format("%s%s", SPACE.repeat(SPACE_BETWEEN_STACKS), StringUtils.center(label, STACK_WIDTH + 2)))
+            .map(label -> String.format("%s%s", SPACE.repeat(SPACE_BETWEEN_STACKS),
+                StringUtils.center(label, STACK_WIDTH + 2)))
             .collect(Collectors.joining());
     }
 }

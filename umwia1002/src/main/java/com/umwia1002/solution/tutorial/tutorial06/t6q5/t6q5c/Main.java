@@ -1,10 +1,11 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q5.Q5c;
+package com.umwia1002.solution.tutorial.tutorial06.t6q5.t6q5c;
 
 import lombok.Getter;
 
 import java.util.Stack;
 
 public class Main {
+
     public static void main(String[] args) {
         String exp = "4 5 + 3 5 3 - / * ";
         String exp2 = "4 5 + 3 * 4 + 5 *";
@@ -19,10 +20,11 @@ public class Main {
             if (isInteger(ch)) {
                 expressionStack.push(Expression.newOperand(ch));
             } else {
-                if(expressionStack.size() < 2) {
+                if (expressionStack.size() < 2) {
                     throw new IllegalArgumentException("Invalid postfix expression");
                 }
-                expressionStack.push(Expression.newOperation(expressionStack.pop(), expressionStack.pop(), ch));
+                expressionStack.push(
+                    Expression.newOperation(expressionStack.pop(), expressionStack.pop(), ch));
             }
         }
 
@@ -43,6 +45,7 @@ public class Main {
     }
 
     static class Expression {
+
         @Getter
         private final String expression;
         private final String operator;
@@ -61,20 +64,24 @@ public class Main {
         public static Expression newOperation(Expression right, Expression left, String operator) {
             String sb = String.format("%s %s %s",
                 left.operator != null && precedence(operator) > precedence(left.operator)
-                    ? bracket(left) : left.expression,
+                ? bracket(left) : left.expression,
                 operator,
                 right.operator != null && precedence(operator) > precedence(right.operator)
-                    ? bracket(right) : right.expression);
+                ? bracket(right) : right.expression);
 
             int bracketLvl = Math.max(right.bracketLvl, left.bracketLvl) +
-                (left.operator != null && precedence(operator) > precedence(left.operator) ||
-                    right.operator != null && precedence(operator) > precedence(right.operator) ? 1 : 0);
+                             (left.operator != null && precedence(operator) > precedence(
+                                 left.operator) ||
+                              right.operator != null && precedence(operator) > precedence(
+                                  right.operator) ? 1 : 0);
 
             return new Expression(operator, sb, bracketLvl);
         }
 
         private static int precedence(String operator) {
-            if (operator == null) return 0;
+            if (operator == null) {
+                return 0;
+            }
             return switch (operator) {
                 case "+", "-" -> 1;
                 case "*", "/" -> 2;

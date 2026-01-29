@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q5.Q5a;
+package com.umwia1002.solution.tutorial.tutorial06.t6q5.t6q5a;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Stack;
 
 public class Main {
+
     public static void main(String[] args) {
         String exp = "4 5 + 3 5 3 - / * ";
         String exp2 = "4 5 + 3 * 4 + 5 *";
@@ -47,6 +48,7 @@ public class Main {
     @AllArgsConstructor
     @RequiredArgsConstructor
     static class Node {
+
         private final String val;
         private Node left;
         private Node right;
@@ -62,16 +64,16 @@ public class Main {
         @Override
         public String toString() {
             String leftExp = left == null
-                ? ""
-                : left.isOperator() && precedence(val) > precedence(left.val)
-                    ? String.format("(%s)", left)
-                    : left.toString();
+                             ? ""
+                             : left.isOperator() && precedence(val) > precedence(left.val)
+                               ? String.format("(%s)", left)
+                               : left.toString();
 
             String rightExp = right == null
-                ? ""
-                : right.isOperator() && precedence(val) > precedence(right.val)
-                    ? String.format("(%s)", right)
-                    : right.toString();
+                              ? ""
+                              : right.isOperator() && precedence(val) > precedence(right.val)
+                                ? String.format("(%s)", right)
+                                : right.toString();
 
             return String.format("%s%s%s", leftExp, val, rightExp);
         }

@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q6;
+package com.umwia1002.solution.tutorial.tutorial06.t6q6;
 
 import java.util.Stack;
 
 public class Q6 {
+
     public static void main(String[] args) {
         towerOfHanoi(3, 'A', 'C', 'B');
         System.out.println(factorial(5));
@@ -10,10 +11,11 @@ public class Q6 {
     }
 
     public static int factorial(int i) {
-        if (i == 1 || i == 0)
+        if (i == 1 || i == 0) {
             return 1;
-        else
+        } else {
             return i * factorial(i - 1);
+        }
     }
 
     public static void towerOfHanoi(int disc, char src, char dst, char aux) {

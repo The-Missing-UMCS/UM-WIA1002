@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q3;
+package com.umwia1002.solution.tutorial.tutorial06.t6q3;
 
 import java.util.Stack;
 
 public class PossibleSequence {
+
     public static final boolean PUSH = true;
     public static final boolean POP = false;
 
@@ -27,13 +28,15 @@ public class PossibleSequence {
                     }
                 }
 
-                if (stack.isEmpty())
+                if (stack.isEmpty()) {
                     break Outer;
+                }
 
-                if (!hasValidMove)
+                if (!hasValidMove) {
                     step = backtrack(stack, tokens);
-                else
+                } else {
                     step = 0;
+                }
             }
 
             printStack(stack);

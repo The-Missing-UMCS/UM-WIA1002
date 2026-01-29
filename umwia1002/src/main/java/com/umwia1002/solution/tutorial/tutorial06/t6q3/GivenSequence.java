@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q3;
+package com.umwia1002.solution.tutorial.tutorial06.t6q3;
 
 import java.util.Stack;
 
 public class GivenSequence {
+
     public static void main(String[] args) {
         System.out.println(solveSequence(new int[]{1, 2, 3}, new int[]{1, 3, 2}));
     }

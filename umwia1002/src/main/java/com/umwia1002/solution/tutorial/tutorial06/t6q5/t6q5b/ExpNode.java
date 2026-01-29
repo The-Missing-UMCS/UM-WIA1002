@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q5.Q5b;
+package com.umwia1002.solution.tutorial.tutorial06.t6q5.t6q5b;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +10,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class ExpNode {
+
     private final String value;
     private ExpNode left;
     private ExpNode right;
@@ -39,7 +40,7 @@ public class ExpNode {
     private String bracket(ExpNode exp) {
         String[] bracket = getBracket(
             !exp.isOperator() || precedence(value) <= precedence(exp.getValue())
-                ? 0 : exp.calcBracketLvl() + 1
+            ? 0 : exp.calcBracketLvl() + 1
         );
         return String.format("%s%s%s", bracket[0], exp, bracket[1]);
     }
@@ -47,12 +48,12 @@ public class ExpNode {
     @Override
     public String toString() {
         String leftExp = left == null ? "" :
-            left.isOperator() && precedence(value) > precedence(left.getValue())
-                ? bracket(left) : left.toString();
+                         left.isOperator() && precedence(value) > precedence(left.getValue())
+                         ? bracket(left) : left.toString();
 
         String rightExp = right == null ? "" :
-            right.isOperator() && precedence(value) > precedence(right.getValue())
-                ? bracket(right) : right.toString();
+                          right.isOperator() && precedence(value) > precedence(right.getValue())
+                          ? bracket(right) : right.toString();
 
         return String.format("%s%s%s", leftExp, value, rightExp);
     }
@@ -64,9 +65,9 @@ public class ExpNode {
     private int calcBracketLvl() {
         return Math.max(
             left == null || !left.isOperator()
-                ? 0 : left.calcBracketLvl() + (precedence(this) > precedence(left) ? 1 : 0),
+            ? 0 : left.calcBracketLvl() + (precedence(this) > precedence(left) ? 1 : 0),
             right == null || !right.isOperator()
-                ? 0 : right.calcBracketLvl() + (precedence(this) > precedence(right) ? 1 : 0)
+            ? 0 : right.calcBracketLvl() + (precedence(this) > precedence(right) ? 1 : 0)
         );
     }
 }

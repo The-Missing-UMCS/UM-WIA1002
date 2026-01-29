@@ -1,10 +1,11 @@
-package com.umwia1002.solution.tutorial.tutorial6.Q3;
+package com.umwia1002.solution.tutorial.tutorial06.t6q3;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 
 public class PossibleSequence2 {
+
     public static final int PUSH = 0;
     public static final int POP = 1;
 
@@ -54,7 +55,8 @@ public class PossibleSequence2 {
                 // Check if we reached a complete solution (all pushes and pops done)
                 boolean isFullSolution = pushPopCounts[0] == 0 && pushPopCounts[1] == 0;
                 if (isFullSolution) {
-                    int[] finalOperations = operationStack.stream().mapToInt(Integer::intValue).toArray();
+                    int[] finalOperations = operationStack.stream().mapToInt(Integer::intValue)
+                        .toArray();
                     allOperationSequences.add(finalOperations);
                     nextOperation = backtrack(operationStack, pushPopCounts);
                     continue;
@@ -72,7 +74,8 @@ public class PossibleSequence2 {
         return allOperationSequences;
     }
 
-    private static Set<Sequence> convertToSequences(Set<int[]> pushPopOperationSequences, int[] inputArray) {
+    private static Set<Sequence> convertToSequences(Set<int[]> pushPopOperationSequences,
+                                                    int[] inputArray) {
         return pushPopOperationSequences.stream()
             .map(operationArray -> {
                 List<OperationNode> operationNodes = new LinkedList<>();
@@ -80,9 +83,11 @@ public class PossibleSequence2 {
                 int idx = 0;
                 for (int operation : operationArray) {
                     if (operation == PUSH) {
-                        operationNodes.add(stack.push(new OperationNode(OperationNode.Move.PUSH, inputArray[idx++])));
+                        operationNodes.add(stack.push(
+                            new OperationNode(OperationNode.Move.PUSH, inputArray[idx++])));
                     } else {
-                        operationNodes.add(new OperationNode(OperationNode.Move.POP, stack.pop().value()));
+                        operationNodes.add(
+                            new OperationNode(OperationNode.Move.POP, stack.pop().value()));
                     }
                 }
 
@@ -96,10 +101,13 @@ public class PossibleSequence2 {
     }
 
     private static boolean isOperationValid(int[] pushPopCounts, int operation) {
-        return (operation == PUSH && pushPopCounts[0] > 0) || (operation == POP && pushPopCounts[1] > 0);
+        return (operation == PUSH && pushPopCounts[0] > 0) || (operation == POP
+                                                               && pushPopCounts[1] > 0);
     }
 
-    private static void performOperation(int operation, int[] pushPopCounts, Stack<Integer> operationStack) {
+    private static void performOperation(int operation,
+                                         int[] pushPopCounts,
+                                         Stack<Integer> operationStack) {
         if (operation == PUSH) {
             pushPopCounts[0]--;
             pushPopCounts[1]++;
@@ -122,6 +130,7 @@ public class PossibleSequence2 {
     }
 
     record Sequence(List<OperationNode> fullOperationList) {
+
         @Override
         public String toString() {
             String operationString = fullOperationList.stream()
@@ -141,7 +150,11 @@ public class PossibleSequence2 {
     /**
      * Holds the data for a single PUSH or POP operation.
      */
-    record OperationNode(Move move, int value) {
+    record OperationNode(
+        Move move,
+        int value
+    ) {
+
         enum Move {
             PUSH, POP
         }
