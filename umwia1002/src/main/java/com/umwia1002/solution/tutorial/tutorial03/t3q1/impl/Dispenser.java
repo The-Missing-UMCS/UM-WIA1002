@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.tutorial3.T3Q1.impl;
+package com.umwia1002.solution.tutorial.tutorial03.t3q1.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

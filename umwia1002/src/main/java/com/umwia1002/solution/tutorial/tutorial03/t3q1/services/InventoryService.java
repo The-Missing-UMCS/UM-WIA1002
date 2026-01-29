@@ -1,6 +1,6 @@
-package com.umwia1002.solution.tutorial.tutorial3.T3Q1.services;
+package com.umwia1002.solution.tutorial.tutorial03.t3q1.services;
 
-import com.umwia1002.solution.tutorial.tutorial3.T3Q1.impl.Dispenser;
+import com.umwia1002.solution.tutorial.tutorial03.t3q1.impl.Dispenser;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class InventoryService {
+
     private final List<Dispenser> dispensers;
 
     public String getAvailableItems() {
