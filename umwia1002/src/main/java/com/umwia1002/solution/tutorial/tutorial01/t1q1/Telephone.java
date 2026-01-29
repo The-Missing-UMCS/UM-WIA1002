@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.tutorial1.T1Q1;
+package com.umwia1002.solution.tutorial.tutorial01.t1q1;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Telephone {
+
     private static int numberOfTelephoneObject = 0;
     private String areaCode;
     private long number;

@@ -1,6 +1,7 @@
-package com.umwia1002.solution.tutorial.tutorial1.T1Q1;
+package com.umwia1002.solution.tutorial.tutorial01.t1q1;
 
 public class Tester {
+
     public static void main(String[] args) {
         int n = 5;
         String areaCode = "03";
