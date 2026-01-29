@@ -1,6 +1,6 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7a.Q3.Q3b;
+package com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ3.l7q3b;
 
-import com.umwia1002.solution.lab.version1.lab7.lab7a.Q3.Q3b.domain.Operation;
+import com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ3.l7q3b.domain.Operation;
 import com.umwia1002.solution.util.ConsoleUtil;
 import com.umwia1002.solution.util.TimerUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -16,6 +16,7 @@ import static com.umwia1002.solution.util.ConsoleUtil.logInfo;
 import static com.umwia1002.solution.util.FileUtil.*;
 
 public class Main {
+
     private static final String FILE = chain(LAB_V1_LAB7, IO_FILES, "Q3.txt");
 
     public static void main(String[] args) {
@@ -35,7 +36,8 @@ public class Main {
             // 2.1. Print operation (e.g. Buy 100 shares at $10 each)
             TimerUtil.delay(250);
             logInfo("%s %d shares at $%d each".formatted(
-                StringUtils.capitalize(String.valueOf(operation.operationType()).toLowerCase()), operation.share(), operation.price()));
+                StringUtils.capitalize(String.valueOf(operation.operationType()).toLowerCase()),
+                operation.share(), operation.price()));
 
             // 2.2. Report the status of the operation (e.g. Buying now...)
             TimerUtil.delay(500);

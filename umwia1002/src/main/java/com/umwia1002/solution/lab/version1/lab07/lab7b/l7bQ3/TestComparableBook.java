@@ -1,9 +1,10 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7b.Q3;
+package com.umwia1002.solution.lab.version1.lab07.lab7b.l7bQ3;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class TestComparableBook {
+
     public static void main(String[] args) {
         Queue<ComparableBook> bookQueue = getBookQueue();
         System.out.println(bookQueue);

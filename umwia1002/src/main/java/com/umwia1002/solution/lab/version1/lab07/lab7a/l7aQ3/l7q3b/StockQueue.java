@@ -1,10 +1,9 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7a.Q3.Q3b;
+package com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ3.l7q3b;
 
-import com.umwia1002.solution.lab.version1.lab7.lab7a.Q3.Q3b.domain.Operation;
-import com.umwia1002.solution.lab.version1.lab7.lab7a.Q3.Q3b.domain.Stock;
+import com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ3.l7q3b.domain.Operation;
+import com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ3.l7q3b.domain.Stock;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.stream.Collectors;
@@ -12,6 +11,7 @@ import java.util.stream.Collectors;
 import static com.umwia1002.solution.util.ConsoleUtil.logError;
 
 public class StockQueue {
+
     private final Queue<Stock> stockQueue;
 
     @Getter
@@ -59,7 +59,8 @@ public class StockQueue {
         String priceString = stockQueue.stream()
             .map(stock -> String.valueOf(stock.getPrice())).collect(Collectors.joining(delimiter));
 
-        return String.format("Queue for Share: [%s]\nQueue for Price: [%s]", sharesString, priceString);
+        return String.format("Queue for Share: [%s]\nQueue for Price: [%s]", sharesString,
+            priceString);
     }
 
 

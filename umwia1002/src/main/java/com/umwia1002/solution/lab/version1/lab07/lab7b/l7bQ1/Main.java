@@ -1,11 +1,12 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7b.Q1;
+package com.umwia1002.solution.lab.version1.lab07.lab7b.l7bQ1;
 
-import com.umwia1002.solution.lab.version1.lab7.lab7b.Q1.queue.PriorityQueue;
+import com.umwia1002.solution.lab.version1.lab07.lab7b.l7bQ1.queue.PriorityQueue;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
+
     private static final int PRINT_LABEL_WIDTH = 45; // Width for labels in printing
 
     public static void main(String[] args) {
@@ -61,7 +62,8 @@ public class Main {
      */
     private static PriorityQueue<Integer> createReversePriorityQueue(Integer[] inputArray) {
         PriorityQueue<Integer> reversePQ = new PriorityQueue<>(Comparator.comparingInt(x -> -x));
-        Arrays.stream(inputArray).forEach(reversePQ::add); // Add elements from the array to the queue
+        Arrays.stream(inputArray)
+            .forEach(reversePQ::add); // Add elements from the array to the queue
         return reversePQ;
     }
 

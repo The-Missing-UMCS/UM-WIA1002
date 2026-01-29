@@ -1,9 +1,10 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7b.Q2;
+package com.umwia1002.solution.lab.version1.lab07.lab7b.l7bQ2;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class L7Q2 {
+public class Main {
+
     private static final int SIZE = 25;
 
     public static void main(String[] args) {

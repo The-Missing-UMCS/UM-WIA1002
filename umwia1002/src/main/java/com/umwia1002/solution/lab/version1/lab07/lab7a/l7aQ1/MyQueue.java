@@ -1,9 +1,10 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7a.Q1;
+package com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ1;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 
 public class MyQueue<E> {
+
     LinkedList<E> lList;
 
     public MyQueue() {

@@ -1,6 +1,6 @@
-package com.umwia1002.solution.lab.version1.lab7.lab7a.Q3.Q3a;
+package com.umwia1002.solution.lab.version1.lab07.lab7a.l7aQ3.l7q3a;
 
-import com.umwia1002.solution.lab.version1.lab6.Q5.advanced.util.Util;
+import com.umwia1002.solution.lab.version1.lab06.l6q5.advanced.util.Util;
 import com.umwia1002.solution.util.InputUtil;
 
 import java.util.Deque;
@@ -11,7 +11,9 @@ import java.util.stream.Collectors;
 import static com.umwia1002.solution.util.ConsoleUtil.*;
 
 public class Main {
-    private static final Pattern QUERY_PATTERN = Pattern.compile("(Buy|Sell) (\\d+) shares at \\$(\\d+) each");
+
+    private static final Pattern QUERY_PATTERN = Pattern.compile(
+        "(Buy|Sell) (\\d+) shares at \\$(\\d+) each");
 
     public static void main(String[] args) {
         int totalCapitalGain = 0;
@@ -19,7 +21,8 @@ public class Main {
         Deque<ShareTransaction> transactions = new LinkedList<>();
 
         while (true) {
-            String query = InputUtil.getStringInput("Enter your query (In format 'Buy / Sell x shares at $y each'): ");
+            String query = InputUtil.getStringInput(
+                "Enter your query (In format 'Buy / Sell x shares at $y each'): ");
 
             if (query.isEmpty()) {
                 break;
@@ -59,7 +62,10 @@ public class Main {
         printTransactions(transactions);
     }
 
-    public static int sell(Deque<ShareTransaction> transactions, int shares, int price, int totalCapitalGain) {
+    public static int sell(Deque<ShareTransaction> transactions,
+                           int shares,
+                           int price,
+                           int totalCapitalGain) {
         logInfo("Selling the shares now...");
         Util.delay(500);
 
@@ -74,7 +80,8 @@ public class Main {
                 // Adjust the transaction and recalculate capital gain
                 totalCapitalGain += shares * (price - transaction.price());
                 transactions.pollFirst();
-                transactions.addFirst(new ShareTransaction(transaction.shares() - shares, transaction.price()));
+                transactions.addFirst(
+                    new ShareTransaction(transaction.shares() - shares, transaction.price()));
                 shares = 0;
             }
         }
@@ -91,10 +98,13 @@ public class Main {
     public static void printTransactions(Deque<ShareTransaction> transactions) {
         final String delimiter = ", ";
         String sharesString = transactions.stream()
-            .map(transaction -> String.valueOf(transaction.shares())).collect(Collectors.joining(delimiter));
+            .map(transaction -> String.valueOf(transaction.shares()))
+            .collect(Collectors.joining(delimiter));
         String priceString = transactions.stream()
-            .map(transaction -> String.valueOf(transaction.price())).collect(Collectors.joining(delimiter));
+            .map(transaction -> String.valueOf(transaction.price()))
+            .collect(Collectors.joining(delimiter));
 
-        System.out.printf("Queue for Share: [%s]\nQueue for Price: [%s]%n", sharesString, priceString);
+        System.out.printf("Queue for Share: [%s]\nQueue for Price: [%s]%n", sharesString,
+            priceString);
     }
 }
