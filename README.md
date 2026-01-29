@@ -6,7 +6,7 @@ WIA1002 is offered by the [**Faculty of Computer Science and Information Technol
 
 To get started, feel free to browse through the materials and use them to supplement your learning. Hopefully that you find this repository to be helpful and informative. If you have any questions or suggestions, please do not hesitate to reach out to me.
 
-![last_update_shield](https://img.shields.io/badge/Last%20Update-April%202023-orange)
+![last_update_shield](https://img.shields.io/badge/Last%20Update-January%202026-orange)
 ![license_shield](https://img.shields.io/github/license/fyiernzy/UM-WIA1002)
 
 ## Couse Introduction
