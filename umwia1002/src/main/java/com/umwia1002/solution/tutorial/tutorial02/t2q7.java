@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial2;
+package com.umwia1002.solution.tutorial.tutorial02;
 
 import java.util.ArrayList;
 
-public class T2Q7 {
+public class t2q7 {
+
     public static <T> void allTransportation(ArrayList<? extends T> list1, ArrayList<T> list2) {
     }
 

@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial2;
+package com.umwia1002.solution.tutorial.tutorial02;
 
 import java.util.ArrayList;
 
-public class T2Q8 {
+public class t2q8 {
+
     public static void main(String[] args) {
         ArrayList<Integer> numOfCars = new ArrayList<>();
         ArrayList<Double> milesPerHour = new ArrayList<>();
@@ -15,7 +16,8 @@ public class T2Q8 {
     }
 
     private static void displayList(ArrayList<? extends Number> list) {
-        for (Number num : list)
+        for (Number num : list) {
             System.out.println(num);
+        }
     }
 }

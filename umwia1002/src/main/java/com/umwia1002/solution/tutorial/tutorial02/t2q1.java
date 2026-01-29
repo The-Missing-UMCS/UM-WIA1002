@@ -1,6 +1,7 @@
-package com.umwia1002.solution.tutorial.tutorial2;
+package com.umwia1002.solution.tutorial.tutorial02;
 
-public class T2Q1 {
+public class t2q1 {
+
     public static void main(String[] args) {
         Container<Integer> intCon = new Container<>();
         Container<String> strCon = new Container<>();
@@ -9,19 +10,18 @@ public class T2Q1 {
         System.out.println(intCon.retrieve());
         System.out.println(strCon.retrieve());
     }
-}
 
-class Container<T> {
-    T t;
+    static class Container<T> {
 
-    Container() {
+        private T t;
+
+        public void add(T t) {
+            this.t = t;
+        }
+
+        public T retrieve() {
+            return t;
+        }
     }
 
-    public void add(T t) {
-        this.t = t;
-    }
-
-    public T retrieve() {
-        return t;
-    }
 }

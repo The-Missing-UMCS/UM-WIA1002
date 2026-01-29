@@ -1,6 +1,7 @@
-package com.umwia1002.solution.tutorial.tutorial2;
+package com.umwia1002.solution.tutorial.tutorial02;
 
-public class T2Q2 {
+public class t2q2 {
+
     public static void main(String[] args) {
         Integer[] nums = {1, 2, 3, 4, 5};
         MyArray.list(nums);
@@ -11,11 +12,15 @@ public class T2Q2 {
         Character[] chars = {'a', 'b', 'c'};
         MyArray.list(chars);
     }
+
+    static class MyArray {
+
+        public static <T> void list(T[] arr) {
+            for (T item : arr) {
+                System.out.println(item);
+            }
+        }
+    }
+
 }
 
-class MyArray {
-    public static <T> void list(T[] arr) {
-        for (T item : arr)
-            System.out.println(item);
-    }
-}
