@@ -1,8 +1,11 @@
-package com.umwia1002.solution.lab.version1.lab8.Homework;
+package com.umwia1002.solution.lab.version1.lab08.Homework;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
+
     private Vertex<T, N> head;
     private int size;
 
@@ -36,9 +39,11 @@ public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparabl
 
     public int getIndex(T v) {
         int pos = 0;
-        for (Vertex<T, N> current = head; current != null; current = current.next, pos++)
-            if (current.value.compareTo(v) == 0)
+        for (Vertex<T, N> current = head; current != null; current = current.next, pos++) {
+            if (current.value.compareTo(v) == 0) {
                 return pos;
+            }
+        }
         return -1;
     }
 
@@ -136,7 +141,7 @@ public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparabl
             return null;
         }
         Edge<T, N> edge = src.firstEdge;
-        while(edge != null) {
+        while (edge != null) {
             if (equals(dstValue(edge), destination)) {
                 return edge.weight;
             }
@@ -151,7 +156,8 @@ public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparabl
             return null;
         }
         List<T> neighbours = new ArrayList<>();
-        for (Edge<T, N> currentEdge = vertex.firstEdge; currentEdge != null; currentEdge = currentEdge.next) {
+        for (Edge<T, N> currentEdge = vertex.firstEdge; currentEdge != null;
+             currentEdge = currentEdge.next) {
             neighbours.add(currentEdge.to.value);
         }
         return Collections.unmodifiableList(neighbours);
@@ -213,6 +219,7 @@ public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparabl
     }
 
     private static class Pair<T extends Comparable<T>, N extends Comparable<N>> {
+
         final Vertex<T, N> src;
         final Vertex<T, N> dst;
 
@@ -223,6 +230,7 @@ public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparabl
     }
 
     private static class Vertex<T extends Comparable<T>, N extends Comparable<N>> {
+
         T value;
         int indeg;
         int outdeg;
@@ -239,6 +247,7 @@ public class CorrectedWeightedGraph<T extends Comparable<T>, N extends Comparabl
     }
 
     private static class Edge<T extends Comparable<T>, N extends Comparable<N>> {
+
         Vertex<T, N> to;
         N weight;
         Edge<T, N> next;

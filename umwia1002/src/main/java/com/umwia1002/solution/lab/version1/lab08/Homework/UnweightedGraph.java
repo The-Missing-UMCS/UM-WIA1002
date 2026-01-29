@@ -1,8 +1,9 @@
-package com.umwia1002.solution.lab.version1.lab8.Homework;
+package com.umwia1002.solution.lab.version1.lab08.Homework;
 
 import java.util.*;
 
 public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
+
     private Vertex<T> head;
     private int size;
 
@@ -36,9 +37,11 @@ public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
 
     public int getIndex(T v) {
         int pos = 0;
-        for (Vertex<T> current = head; current != null; current = current.next, pos++)
-            if (current.value.compareTo(v) == 0)
+        for (Vertex<T> current = head; current != null; current = current.next, pos++) {
+            if (current.value.compareTo(v) == 0) {
                 return pos;
+            }
+        }
         return -1;
     }
 
@@ -163,7 +166,8 @@ public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
 
         // 2. If the vertex exists, create a list of neighbours
         List<T> neighbours = new ArrayList<>();
-        for (Edge<T> currentEdge = vertex.firstEdge; currentEdge != null; currentEdge = currentEdge.next) {
+        for (Edge<T> currentEdge = vertex.firstEdge; currentEdge != null;
+             currentEdge = currentEdge.next) {
             neighbours.add(currentEdge.to.value);
         }
 
@@ -246,7 +250,10 @@ public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
         return allPaths;
     }
 
-    private void findAllPathsRecursive(T current, T end, Set<T> currentPathVisited, List<List<T>> allPaths) {
+    private void findAllPathsRecursive(T current,
+                                       T end,
+                                       Set<T> currentPathVisited,
+                                       List<List<T>> allPaths) {
         currentPathVisited.add(current);
 
         if (current.equals(end)) {
@@ -349,6 +356,7 @@ public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
     }
 
     private static class Pair<T extends Comparable<T>> {
+
         final Vertex<T> src;
         final Vertex<T> dst;
 
@@ -359,6 +367,7 @@ public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
     }
 
     private static class Vertex<T extends Comparable<T>> {
+
         T value;
         int indeg;
         int outdeg;
@@ -372,6 +381,7 @@ public class UnweightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
     }
 
     private static class Edge<T extends Comparable<T>> {
+
         Vertex<T> to;
         Edge<T> next;
 
