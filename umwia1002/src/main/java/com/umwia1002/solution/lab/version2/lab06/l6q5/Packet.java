@@ -1,9 +1,13 @@
-package com.umwia1002.solution.lab.version2.lab6.Q5;
+package com.umwia1002.solution.lab.version2.lab06.l6q5;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-public record Packet(MediaType mediaType, int id) implements Comparable<Packet> {
+public record Packet(
+    MediaType mediaType,
+    int id
+) implements Comparable<Packet> {
+
     @Override
     public int compareTo(Packet o) {
         return Integer.compare(mediaType.priority, o.mediaType.priority);

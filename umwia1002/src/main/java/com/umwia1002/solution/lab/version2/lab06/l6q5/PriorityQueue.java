@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab6.Q5;
+package com.umwia1002.solution.lab.version2.lab06.l6q5;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -13,6 +13,7 @@ import java.util.Queue;
  * @param <E> the type of elements held in this queue
  */
 public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
+
     int size;
     Node<E> head;
     Node<E> tail;
@@ -37,8 +38,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
     @Override
     public E element() {
         E item = peek();
-        if (item == null)
+        if (item == null) {
             throw new NoSuchElementException();
+        }
         return item;
     }
 
@@ -50,8 +52,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      */
     @Override
     public E remove() {
-        if (head == null)
+        if (head == null) {
             throw new NoSuchElementException();
+        }
         return unlink(head);
     }
 
@@ -63,8 +66,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      */
     @Override
     public E poll() {
-        if (head == null)
+        if (head == null) {
             return null;
+        }
         return unlink(head);
     }
 
@@ -79,8 +83,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      */
     @Override
     public boolean add(E e) {
-        if (e == null)
+        if (e == null) {
             throw new NullPointerException();
+        }
 
         if (head == null) {
             addFirst(e);
@@ -153,10 +158,11 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
     void linkBefore(E item, Node<E> succ) {
         Node<E> pred = succ.prev;
         Node<E> newNode = new Node<>(pred, item, succ);
-        if (pred == null)
+        if (pred == null) {
             head = newNode;
-        else
+        } else {
             pred.next = newNode;
+        }
         succ.prev = newNode;
         size++;
     }
@@ -215,8 +221,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
     @Override
     public boolean contains(Object o) {
         for (Node<E> node = head; node != null; node = node.next) {
-            if (o == null ? node.item == null : o.equals(node.item))
+            if (o == null ? node.item == null : o.equals(node.item)) {
                 return true;
+            }
         }
         return false;
     }
@@ -260,8 +267,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
     public Object[] toArray() {
         Object[] result = new Object[size];
         int i = 0;
-        for (Node<E> node = head; node != null; node = node.next)
+        for (Node<E> node = head; node != null; node = node.next) {
             result[i++] = node.item;
+        }
         return result;
     }
 
@@ -269,23 +277,27 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      * Returns an array containing all of the elements in this queue in proper order;
      * the runtime type of the returned array is that of the specified array.
      *
-     * @param a   the array into which the elements of the queue are to be stored, if it is big enough;
-     *            otherwise, a new array of the same runtime type is allocated for this purpose
+     * @param a the array into which the elements of the queue are to be stored, if it is big
+     * enough;
+     * otherwise, a new array of the same runtime type is allocated for this purpose
      * @param <T> the component type of the array to contain the queue
      * @return an array containing all of the elements in this queue
      */
     @Override
     @SuppressWarnings("unchecked")
     public <T> T[] toArray(T[] a) {
-        if (a.length < size)
+        if (a.length < size) {
             a = (T[]) java.lang.reflect.Array.newInstance(
                 a.getClass().getComponentType(), size);
+        }
         int i = 0;
         Object[] result = a;
-        for (Node<E> node = head; node != null; node = node.next)
+        for (Node<E> node = head; node != null; node = node.next) {
             result[i++] = node.item;
-        if (a.length > size)
+        }
+        if (a.length > size) {
             a[size] = null;
+        }
         return a;
     }
 
@@ -298,8 +310,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
     @Override
     public boolean containsAll(Collection<?> c) {
         for (Object o : c) {
-            if (!contains(o))
+            if (!contains(o)) {
                 return false;
+            }
         }
         return true;
     }
@@ -314,8 +327,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
     public boolean addAll(Collection<? extends E> c) {
         boolean modified = false;
         for (E e : c) {
-            if (add(e))
+            if (add(e)) {
                 modified = true;
+            }
         }
         return modified;
     }
@@ -382,8 +396,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      */
     Node<E> node(int index) {
-        if (index < 0 || index >= size)
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
         if (index < (size >> 1)) {
             Node<E> x = head;
             for (int i = 0; i < index; i++) {
@@ -405,6 +420,7 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      * @param <E> the type of element stored in the node
      */
     static class Node<E extends Comparable<E>> {
+
         E item;
         Node<E> prev;
         Node<E> next;
@@ -427,6 +443,7 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
      * An iterator over the elements in this priority queue.
      */
     public class QueueIterator implements Iterator<E> {
+
         private Node<E> next;
         private Node<E> lastReturned;
         private int nextIndex;
@@ -457,8 +474,9 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
          */
         @Override
         public E next() {
-            if (!hasNext())
+            if (!hasNext()) {
                 throw new NoSuchElementException();
+            }
             lastReturned = next;
             next = next.next;
             nextIndex++;
@@ -468,12 +486,15 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
         /**
          * Removes from the underlying collection the last element returned by this iterator.
          *
-         * @throws IllegalStateException if the {@code next} method has not yet been called, or the {@code remove} method has already been called after the last call to the {@code next} method
+         * @throws IllegalStateException if the {@code next} method has not yet been called, or the
+         * {@code remove} method has already been called after the last call to the {@code next}
+         * method
          */
         @Override
         public void remove() {
-            if (lastReturned == null)
+            if (lastReturned == null) {
                 throw new IllegalStateException();
+            }
             PriorityQueue.this.unlink(lastReturned);
             lastReturned = null;
             nextIndex--;

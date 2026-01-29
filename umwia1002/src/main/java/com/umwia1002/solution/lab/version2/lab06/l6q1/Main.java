@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab6.Q1;
+package com.umwia1002.solution.lab.version2.lab06.l6q1;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
+
     private static final Pattern PATTERN = Pattern.compile("([DW])\\s(\\d+)");
 
     public static void main(String[] args) {

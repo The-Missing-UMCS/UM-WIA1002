@@ -1,10 +1,11 @@
-package com.umwia1002.solution.lab.version2.lab6.Q5;
+package com.umwia1002.solution.lab.version2.lab06.l6q5;
 
 import java.util.Arrays;
 
-import static com.umwia1002.solution.lab.version2.lab6.Q5.Packet.MediaType.*;
+import static com.umwia1002.solution.lab.version2.lab06.l6q5.Packet.MediaType.*;
 
 public class Main {
+
     public static void main(String[] args) {
         // 1. Initialize the packets
         Packet[] packets = getPackets();

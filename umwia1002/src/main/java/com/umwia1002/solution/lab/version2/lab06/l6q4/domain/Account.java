@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab6.Q4.domain;
+package com.umwia1002.solution.lab.version2.lab06.l6q4.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,7 @@ import java.util.Queue;
 
 @RequiredArgsConstructor
 public class Account {
+
     private final Queue<Stock> stockQueue;
 
     @Getter

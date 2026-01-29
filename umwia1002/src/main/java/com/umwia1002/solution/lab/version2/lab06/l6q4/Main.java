@@ -1,22 +1,21 @@
-package com.umwia1002.solution.lab.version2.lab6.Q4;
+package com.umwia1002.solution.lab.version2.lab06.l6q4;
 
-import com.umwia1002.solution.lab.version2.lab6.Q4.domain.Account;
-import com.umwia1002.solution.lab.version2.lab6.Q4.domain.Transaction;
+import com.umwia1002.solution.lab.version2.lab06.l6q4.domain.Account;
+import com.umwia1002.solution.lab.version2.lab06.l6q4.domain.Transaction;
 
-import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.umwia1002.solution.lab.version2.lab6.Q4.domain.Transaction.Status.BUY;
-import static com.umwia1002.solution.lab.version2.lab6.Q4.domain.Transaction.Status.SELL;
+import static com.umwia1002.solution.lab.version2.lab06.l6q4.domain.Transaction.Status.BUY;
+import static com.umwia1002.solution.lab.version2.lab06.l6q4.domain.Transaction.Status.SELL;
 import static com.umwia1002.solution.util.FileUtil.*;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
         // 1. Initialize the transaction history
         String filePath = chain(LAB_V2_LAB6, IO_FILES, "lab6Q4.txt");

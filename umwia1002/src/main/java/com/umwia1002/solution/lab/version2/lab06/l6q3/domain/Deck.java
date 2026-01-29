@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab6.Q3.domain;
+package com.umwia1002.solution.lab.version2.lab06.l6q3.domain;
 
 import lombok.RequiredArgsConstructor;
 
@@ -9,6 +9,7 @@ import java.util.Queue;
 
 @RequiredArgsConstructor
 public class Deck {
+
     private final Queue<Integer> deck;
 
     public static Deck getInstance() {

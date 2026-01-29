@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab6.Q2;
+package com.umwia1002.solution.lab.version2.lab06.l6q2;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,7 +24,9 @@ public class Main {
         printProducts(codes, products);
     }
 
-    private static void processContent(String content, Queue<String> codes, Map<String, Queue<String>> products) {
+    private static void processContent(String content,
+                                       Queue<String> codes,
+                                       Map<String, Queue<String>> products) {
         Pattern pattern = Pattern.compile("(P0\\d)\\s(\\w+)");
         Matcher matcher = pattern.matcher(content);
 

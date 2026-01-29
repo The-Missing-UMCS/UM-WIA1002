@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab6.Q4.domain;
+package com.umwia1002.solution.lab.version2.lab06.l6q4.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Transaction {
+
     private Status status;
     private int share;
     private int price;

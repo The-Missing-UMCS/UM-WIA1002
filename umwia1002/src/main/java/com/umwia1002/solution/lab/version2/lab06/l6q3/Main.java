@@ -1,9 +1,10 @@
-package com.umwia1002.solution.lab.version2.lab6.Q3;
+package com.umwia1002.solution.lab.version2.lab06.l6q3;
 
-import com.umwia1002.solution.lab.version2.lab6.Q3.domain.Deck;
-import com.umwia1002.solution.lab.version2.lab6.Q3.domain.Player;
+import com.umwia1002.solution.lab.version2.lab06.l6q3.domain.Deck;
+import com.umwia1002.solution.lab.version2.lab06.l6q3.domain.Player;
 
 public class Main {
+
     public static void main(String[] args) {
         // 1. Initialize a game
         int numOfCards = 5;
