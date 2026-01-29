@@ -1,10 +1,11 @@
-package com.umwia1002.solution.lab.version1.lab9.lab9b.L9bQ2;
+package com.umwia1002.solution.lab.version1.lab09.lab9b.l9bQ2;
 
 import org.apache.commons.text.StringSubstitutor;
 
 import java.util.Map;
 
-public class L9bQ2b {
+public class l9bQ2b {
+
     public static void main(String[] args) {
         binomialExpansion(3);
     }

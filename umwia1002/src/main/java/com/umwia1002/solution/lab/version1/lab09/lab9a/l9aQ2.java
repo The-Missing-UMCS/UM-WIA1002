@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab9.lab9a;
+package com.umwia1002.solution.lab.version1.lab09.lab9a;
 
 import com.umwia1002.solution.util.BenchmarkUtil;
 
@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class L9aQ2 {
+public class l9aQ2 {
+
     public static void main(String[] args) {
         // 1. Validate the output of the following method calls
         List<String> arr = permuteString("ABC");
@@ -17,8 +18,10 @@ public class L9aQ2 {
         System.out.println(set);
 
         // 2. Measure the time taken to execute the following method calls
-        BenchmarkUtil.benchmarkFunction("permuteString(String.class)", 100_000, () -> permuteString("ABC"));
-        BenchmarkUtil.benchmarkFunction("permuteStringSet(String.class)", 100_000, () -> permuteStringSet("ABC"));
+        BenchmarkUtil.benchmarkFunction("permuteString(String.class)", 100_000,
+            () -> permuteString("ABC"));
+        BenchmarkUtil.benchmarkFunction("permuteStringSet(String.class)", 100_000,
+            () -> permuteStringSet("ABC"));
     }
 
     public static List<String> permuteString(String str) {
@@ -56,7 +59,8 @@ public class L9aQ2 {
             result.add(prefix);
         } else {
             for (int i = 0; i < str.length(); i++) {
-                permuteHelper(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1), result);
+                permuteHelper(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1),
+                    result);
             }
         }
     }

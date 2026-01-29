@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab9.lab9b;
+package com.umwia1002.solution.lab.version1.lab09.lab9b;
 
 import com.umwia1002.solution.util.BenchmarkUtil;
 import com.umwia1002.solution.util.InputUtil;
@@ -9,7 +9,8 @@ import java.util.function.Function;
 
 import static com.umwia1002.solution.util.ConsoleUtil.logInfo;
 
-public class L9bQ3 {
+public class l9bQ3 {
+
     static int count = 0;
 
     public static void main(String[] args) {
@@ -20,10 +21,10 @@ public class L9bQ3 {
                 hanoi(n, "A", "C", "B");
                 return (long) count;
             }),
-            new Method("Formula", L9bQ3::countUsingFormula),
-            new Method("Recursively 1", L9bQ3::countRecursively1),
-            new Method("Recursively 2", L9bQ3::countRecursively2),
-            new Method("Custom T function", L9bQ3::countUsingFunction)
+            new Method("Formula", l9bQ3::countUsingFormula),
+            new Method("Recursively 1", l9bQ3::countRecursively1),
+            new Method("Recursively 2", l9bQ3::countRecursively2),
+            new Method("Custom T function", l9bQ3::countUsingFunction)
         );
 
         while (true) {
@@ -72,8 +73,9 @@ public class L9bQ3 {
     }
 
     private static long countRecursively1(int numOfDisc) {
-        if (numOfDisc == 1)
+        if (numOfDisc == 1) {
             return 1;
+        }
         return 2 * countRecursively1(numOfDisc - 1) + 1;
     }
 
@@ -98,6 +100,10 @@ public class L9bQ3 {
         return sum;
     }
 
-    record Method(String label, Function<Integer, Long> func) {
+    record Method(
+        String label,
+        Function<Integer, Long> func
+    ) {
+
     }
 }

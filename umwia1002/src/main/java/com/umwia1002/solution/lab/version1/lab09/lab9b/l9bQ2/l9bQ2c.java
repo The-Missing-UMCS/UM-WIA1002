@@ -1,8 +1,9 @@
-package com.umwia1002.solution.lab.version1.lab9.lab9b.L9bQ2;
+package com.umwia1002.solution.lab.version1.lab09.lab9b.l9bQ2;
 
 import com.umwia1002.solution.util.LaTeXUtil;
 
-public class L9bQ2c {
+public class l9bQ2c {
+
     public static void main(String[] args) {
         // 1. Generate LaTeX representation for binomial expansion
         String latexExpression = generateBinomialLatex(3);
@@ -19,7 +20,8 @@ public class L9bQ2c {
         latexBuilder.append("(x + y)^").append(n).append(" = ");
         for (int k = 0; k <= n; k++) {
             int coefficient = combinatorial(n, k);
-            latexBuilder.append(coefficient).append("x^{").append(n - k).append("}y^{").append(k).append("}");
+            latexBuilder.append(coefficient).append("x^{").append(n - k).append("}y^{").append(k)
+                .append("}");
             if (k < n) {
                 latexBuilder.append(" + ");
             }
