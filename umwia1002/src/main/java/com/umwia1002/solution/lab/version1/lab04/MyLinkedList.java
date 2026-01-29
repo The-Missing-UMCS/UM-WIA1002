@@ -1,30 +1,29 @@
-package com.umwia1002.solution.lab.version1.lab4;
+package com.umwia1002.solution.lab.version1.lab04;
 
 import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> {
+
     private Node<E> head;
     private Node<E> tail;
     private int size;
 
-    public MyLinkedList() {
-
-    }
-
     public void addFirst(E e) {
         Node<E> newNode = new Node<>(e, head);
         head = newNode;
-        if (tail == null)
+        if (tail == null) {
             tail = newNode;
+        }
         size++;
     }
 
     public void addLast(E e) {
         Node<E> newNode = new Node<>(e, null);
-        if (tail == null)
+        if (tail == null) {
             head = newNode;
-        else
+        } else {
             tail.next = newNode;
+        }
 
         tail = newNode;
         size++;
@@ -37,12 +36,13 @@ public class MyLinkedList<E> {
     public void add(int index, E e) {
         checkPositionIndex(index);
 
-        if (index == 0)
+        if (index == 0) {
             addFirst(e);
-        else if (index == size)
+        } else if (index == size) {
             addLast(e);
-        else
+        } else {
             linkAfter(e, node(index - 1));
+        }
     }
 
     public boolean contains(E element) {
@@ -50,22 +50,25 @@ public class MyLinkedList<E> {
     }
 
     public E removeFirst() {
-        if (head == null)
+        if (head == null) {
             throw new NoSuchElementException();
+        }
 
         E element = head.element;
         head = head.next;
 
-        if (head == null)
+        if (head == null) {
             tail = null;
+        }
 
         size--;
         return element;
     }
 
     public E removeLast() {
-        if (tail == null)
+        if (tail == null) {
             throw new NoSuchElementException();
+        }
 
         E element = tail.element;
 
@@ -83,10 +86,11 @@ public class MyLinkedList<E> {
     public E remove(int index) {
         checkElementIndex(index);
 
-        if (index == 0)
+        if (index == 0) {
             removeFirst();
-        else if (index == size - 1)
+        } else if (index == size - 1) {
             removeLast();
+        }
 
         final Node<E> prev = node(index - 1);
         E element = prev.next.element;
@@ -103,15 +107,17 @@ public class MyLinkedList<E> {
 
     public E getFirst() {
         final Node<E> h = head;
-        if (h == null)
+        if (h == null) {
             throw new NoSuchElementException();
+        }
         return h.element;
     }
 
     public E getLast() {
         final Node<E> t = tail;
-        if (t == null)
+        if (t == null) {
             throw new NoSuchElementException();
+        }
         return t.element;
     }
 
@@ -119,14 +125,16 @@ public class MyLinkedList<E> {
         int index = 0;
         if (element == null) {
             for (Node<E> node = head; node != null; node = node.next) {
-                if (node.element == element)
+                if (node.element == element) {
                     return index;
+                }
                 index++;
             }
         } else {
             for (Node<E> node = head; node != null; node = node.next) {
-                if (node.element.equals(element))
+                if (node.element.equals(element)) {
                     return index;
+                }
                 index++;
             }
         }
@@ -139,14 +147,16 @@ public class MyLinkedList<E> {
         int i = 0;
         if (element == null) {
             for (Node<E> node = head; node != null; node = node.next) {
-                if (node.element == element)
+                if (node.element == element) {
                     index = i;
+                }
                 i++;
             }
         } else {
             for (Node<E> node = head; node != null; node = node.next) {
-                if (node.element.equals(element))
+                if (node.element.equals(element)) {
                     index = i;
+                }
                 i++;
             }
         }
@@ -201,8 +211,9 @@ public class MyLinkedList<E> {
     }
 
     public E getMiddleValue() {
-        if (size == 0)
+        if (size == 0) {
             throw new NoSuchElementException();
+        }
 
         return node(size >> 1).element;
     }
@@ -229,13 +240,15 @@ public class MyLinkedList<E> {
     }
 
     private void checkElementIndex(int index) {
-        if (!isElementIndex(index))
+        if (!isElementIndex(index)) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+        }
     }
 
     private void checkPositionIndex(int index) {
-        if (!isPositionIndex(index))
+        if (!isPositionIndex(index)) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+        }
     }
 
     private String outOfBoundsMsg(int index) {
@@ -247,8 +260,9 @@ public class MyLinkedList<E> {
      */
     Node<E> node(int index) {
         Node<E> node = head;
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++) {
             node = node.next;
+        }
 
         return node;
     }
@@ -256,4 +270,16 @@ public class MyLinkedList<E> {
     public int size() {
         return this.size;
     }
+
+    private static class Node<E> {
+
+        E element;
+        Node<E> next;
+
+        public Node(E element, Node<E> next) {
+            this.element = element;
+            this.next = next;
+        }
+    }
+
 }
