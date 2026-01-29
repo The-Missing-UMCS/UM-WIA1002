@@ -1,30 +1,29 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q4.l1q4a;
+package com.umwia1002.solution.lab.version1.lab01.l1q4.l1q4b;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @RequiredArgsConstructor
 public class Transaction {
+
     public static final char WITHDRAW = 'W';
     public static final char DEPOSIT = 'D';
 
-    private final Date date;
+    private final LocalDate date;
     private final char type;
     private final double amount;
     private final double balance;
     private final String description;
 
     public Transaction(char type, double amount, double balance, String description) {
-        this(new Date(), type, amount, balance, description);
+        this(LocalDate.now(), type, amount, balance, description);
     }
 
     @Override
     public String toString() {
-        // Java 15
         return """
             Date: %s
             Type: %s

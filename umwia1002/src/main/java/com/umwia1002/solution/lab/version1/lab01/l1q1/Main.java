@@ -1,22 +1,20 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q1;
+package com.umwia1002.solution.lab.version1.lab01.l1q1;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 import static com.umwia1002.solution.util.FileUtil.*;
 
-public class l1q1 {
+public class Main {
+
     private static final String FILE_PATH = chain(LAB_V1_LAB1, IO_FILES, "ZhiYang_22004833.txt");
 
     public static void main(String[] args) {
-
 
         try (Scanner scanner = new Scanner(System.in);
              PrintWriter writer = new PrintWriter(new FileOutputStream(FILE_PATH, true))) {

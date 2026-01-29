@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q3.l1q3b;
+package com.umwia1002.solution.lab.version1.lab01.l1q3.l1q3b;
 
 import lombok.Getter;
 
@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 public class Account {
+
     private BigDecimal annualInterestRate = BigDecimal.ZERO; // Use BigDecimal for rates
 
     private final int id;

@@ -1,6 +1,7 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q4.l1q4a;
+package com.umwia1002.solution.lab.version1.lab01.l1q4.l1q4b;
 
 public class Main {
+
     public static void main(String[] args) {
         Account1 account = new Account1("George", 1122, 1000);
 

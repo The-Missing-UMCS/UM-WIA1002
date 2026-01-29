@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q2;
+package com.umwia1002.solution.lab.version1.lab01.l1q2;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,7 +7,8 @@ import java.util.Scanner;
 import static com.umwia1002.solution.util.FileUtil.*;
 
 public class l1q2a {
-    private static final String FOLDER = chain(LAB_V1_LAB1, IO_FILES, "L1Q2");
+
+    private static final String FOLDER = chain(LAB_V1_LAB1, IO_FILES, "l1q2");
 
     public static void main(String[] args) throws Exception {
         File[] files = new File[]{
@@ -22,7 +23,7 @@ public class l1q2a {
             // 1. Read the content of the file
             String content = readAsString(files[i]);
 
-            if(content == null) {
+            if (content == null) {
                 System.out.println("Error reading file: " + files[i].getName());
                 continue;
             }

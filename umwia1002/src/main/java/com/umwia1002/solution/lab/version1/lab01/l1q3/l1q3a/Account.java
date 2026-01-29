@@ -1,9 +1,10 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q3.l1q3a;
+package com.umwia1002.solution.lab.version1.lab01.l1q3.l1q3a;
 
 import java.util.Date;
 
 
 public class Account {
+
     private int id;
     private Date dateCreated;
     private double balance;

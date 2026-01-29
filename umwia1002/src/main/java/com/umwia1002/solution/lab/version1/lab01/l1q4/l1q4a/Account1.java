@@ -1,16 +1,13 @@
-package com.umwia1002.solution.lab.version1.lab1.L1Q4.l1q4b;
+package com.umwia1002.solution.lab.version1.lab01.l1q4.l1q4a;
 
-import com.umwia1002.solution.lab.version1.lab1.L1Q3.l1q3b.Account;
-import lombok.Getter;
+import com.umwia1002.solution.lab.version1.lab01.l1q3.l1q3a.Account;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
-@Getter
 public class Account1 extends Account {
-    private final String name;
-    private final ArrayList<Transaction> transactions;
+
+    private String name;
+    private ArrayList<Transaction> transactions;
 
     Account1(String name, int id, double balance) {
         super(id, balance);
@@ -18,10 +15,19 @@ public class Account1 extends Account {
         this.transactions = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
     public boolean withdraw(double amount, String description) {
         boolean isWithdrawSuccessful = super.withdraw(amount);
         if (isWithdrawSuccessful) {
-            this.transactions.add(new Transaction(Transaction.WITHDRAW, amount, getBalance().doubleValue(), description));
+            this.transactions.add(
+                new Transaction(Transaction.WITHDRAW, amount, getBalance(), description));
         }
         return isWithdrawSuccessful;
     }
@@ -29,7 +35,8 @@ public class Account1 extends Account {
     public boolean deposit(double amount, String description) {
         boolean isDepositSuccessful = super.deposit(amount);
         if (isDepositSuccessful) {
-            this.transactions.add(new Transaction(Transaction.DEPOSIT, amount, getBalance().doubleValue(), description));
+            this.transactions.add(
+                new Transaction(Transaction.DEPOSIT, amount, getBalance(), description));
         }
         return isDepositSuccessful;
     }
@@ -37,12 +44,16 @@ public class Account1 extends Account {
     @Override
     public String toString() {
         String[] content = super.toString().split(System.lineSeparator());
-        String info = Arrays.stream(content, 1, content.length)
-            .collect(Collectors.joining(System.lineSeparator()));
+        StringBuilder info = new StringBuilder();
+        for (int i = 1; i < content.length; i++) {
+            info.append(content[i]).append(System.lineSeparator());
+        }
 
         return """
             Account summary:
             Account holder: %s
-            %s""".formatted(this.getName(), info);
+            %s""".formatted(getName(), info.toString());
     }
+
+
 }
