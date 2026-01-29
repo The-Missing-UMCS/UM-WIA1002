@@ -1,8 +1,9 @@
-package com.umwia1002.solution.tutorial.tutorial4.T4Q1;
+package com.umwia1002.solution.tutorial.tutorial04.t4q1;
 
 public class Main {
-	public static void main(String[] args) {
-		// a)
+
+    public static void main(String[] args) {
+        // a)
         LinkedList<Character> list = new LinkedList<>();
         Node<Character> node1 = new Node<>('a');
         Node<Character> node2 = new Node<>('z');
@@ -16,5 +17,5 @@ public class Main {
         list.addLast('c');
         list.add(2, 'd');
         list.remove(1);
-	}
+    }
 }
