@@ -1,4 +1,4 @@
-package com.umwia1002.solution.tutorial.tutorial10.T10Q1.hard;
+package com.umwia1002.solution.tutorial.tutorial10.t10q1.hard;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -14,12 +14,14 @@ import org.jfree.chart.ui.ApplicationFrame;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.*;
+import java.io.Serial;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class GraphDrawer extends ApplicationFrame {
 
     // You can optionally omit/modify this if you prefer a different approach to serialization.
+    @Serial
     private static final long serialVersionUID = 7961411087546750801L;
 
     /**
@@ -27,14 +29,14 @@ public class GraphDrawer extends ApplicationFrame {
      * parameters and data.
      *
      * @param applicationTitle Window title
-     * @param chartTitle       Title of the chart
-     * @param xAxisLabel       Label for x-axis
-     * @param yAxisLabel       Label for y-axis
-     * @param seriesNames      Names of the series (e.g., "Linear Search", "Binary Search", etc.)
-     * @param xAxisValues      Array of x-axis categories (e.g., array sizes)
-     * @param yAxisValues      2D array of data points for each series
-     * @param numberOfSize     Number of points on the x-axis
-     * @param numberOfMethod   Number of data series
+     * @param chartTitle Title of the chart
+     * @param xAxisLabel Label for x-axis
+     * @param yAxisLabel Label for y-axis
+     * @param seriesNames Names of the series (e.g., "Linear Search", "Binary Search", etc.)
+     * @param xAxisValues Array of x-axis categories (e.g., array sizes)
+     * @param yAxisValues 2D array of data points for each series
+     * @param numberOfSize Number of points on the x-axis
+     * @param numberOfMethod Number of data series
      */
     public GraphDrawer(String applicationTitle,
                        String chartTitle,
@@ -49,7 +51,8 @@ public class GraphDrawer extends ApplicationFrame {
         super(applicationTitle);
 
         // Create the dataset from the x/y values provided
-        DefaultCategoryDataset dataset = createDataset(seriesNames, xAxisValues, yAxisValues, numberOfSize, numberOfMethod);
+        DefaultCategoryDataset dataset = createDataset(seriesNames, xAxisValues, yAxisValues,
+            numberOfSize, numberOfMethod);
 
         // Create the chart
         JFreeChart lineChart = ChartFactory.createLineChart(
@@ -90,10 +93,10 @@ public class GraphDrawer extends ApplicationFrame {
      * Strings. We also sort them via a {@code TreeMap} so the line chart will
      * move in ascending order of x-values.</p>
      *
-     * @param seriesNames    Names of the series
-     * @param xAxis          x-axis values
-     * @param yAxis          2D array of y-values
-     * @param numberOfSize   Number of x-axis data points
+     * @param seriesNames Names of the series
+     * @param xAxis x-axis values
+     * @param yAxis 2D array of y-values
+     * @param numberOfSize Number of x-axis data points
      * @param numberOfMethod Number of series
      * @return A {@link DefaultCategoryDataset} that can be used by a CategoryPlot
      */
@@ -159,7 +162,8 @@ public class GraphDrawer extends ApplicationFrame {
 
         // Adjust the stroke and colors for each series if you want
         // Here we apply the same stroke width to all series
-        for (int seriesIndex = 0; seriesIndex < renderer.getPlot().getDataset().getRowCount(); seriesIndex++) {
+        for (int seriesIndex = 0; seriesIndex < renderer.getPlot().getDataset().getRowCount();
+             seriesIndex++) {
             renderer.setSeriesStroke(seriesIndex, new BasicStroke(2.0f));
         }
     }

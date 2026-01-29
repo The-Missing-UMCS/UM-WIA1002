@@ -1,6 +1,6 @@
-package com.umwia1002.solution.tutorial.tutorial10.T10Q2;
+package com.umwia1002.solution.tutorial.tutorial10.t10q2;
 
-public class T10Q2 {
+public class t10q2 {
 	/*
 	 * Insertion sort repeatedly inserts an unsorted element into a sorted subarray
 	 * 
