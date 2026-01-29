@@ -1,4 +1,6 @@
-package com.umwia1002.solution.lab.version2.lab08.l8q3;
+package com.umwia1002.solution.lab.version2.lab08.impl;
+
+import java.util.Comparator;
 
 public class MergeSort implements SortingAlgorithm {
 
@@ -25,7 +27,7 @@ public class MergeSort implements SortingAlgorithm {
     }
 
     @Override
-    public <T> void sort(T[] arr, java.util.Comparator<? super T> comparator) {
+    public <T> void sort(T[] arr, Comparator<T> comparator) {
         int n = arr.length;
         Object[] temp = new Object[n];
         for (int size = 1; size < n; size <<= 1) {
@@ -67,7 +69,7 @@ public class MergeSort implements SortingAlgorithm {
 
     @SuppressWarnings("unchecked")
     public <T> void merge(T[] arr, Object[] temp, int l, int m, int r,
-            java.util.Comparator<? super T> comparator) {
+                          java.util.Comparator<? super T> comparator) {
         int i = l;
         int j = m + 1;
         int k = l;

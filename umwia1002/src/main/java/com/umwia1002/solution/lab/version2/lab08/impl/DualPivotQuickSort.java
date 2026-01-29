@@ -1,4 +1,6 @@
-package com.umwia1002.solution.lab.version2.lab08.l8q3;
+package com.umwia1002.solution.lab.version2.lab08.impl;
+
+import java.util.Comparator;
 
 public class DualPivotQuickSort implements SortingAlgorithm {
 
@@ -44,7 +46,7 @@ public class DualPivotQuickSort implements SortingAlgorithm {
     }
 
     @Override
-    public <T> void sort(T[] arr, java.util.Comparator<? super T> comparator) {
+    public <T> void sort(T[] arr, Comparator<T> comparator) {
         int n = arr.length;
         if (n < 2) {
             return;
@@ -79,21 +81,23 @@ public class DualPivotQuickSort implements SortingAlgorithm {
     }
 
     public int[] partition(int[] arr, int low, int high) {
-        if (arr[low] > arr[high])
+        if (arr[low] > arr[high]) {
             swap(arr, low, high);
+        }
 
         // p is the left pivot, and q
         // is the right pivot.
         int leftPos = low + 1, rightPos = high - 1,
-                leftPivot = arr[low], rightPivot = arr[high];
+            leftPivot = arr[low], rightPivot = arr[high];
 
         for (int index = low + 1; index <= rightPos; index++) {
             if (arr[index] < leftPivot) {
                 swap(arr, index, leftPos);
                 leftPos++;
             } else if (arr[index] >= rightPivot) {
-                while (arr[rightPos] > rightPivot && index < rightPos)
+                while (arr[rightPos] > rightPivot && index < rightPos) {
                     rightPos--;
+                }
 
                 swap(arr, index, rightPos);
                 rightPos--;
@@ -114,10 +118,13 @@ public class DualPivotQuickSort implements SortingAlgorithm {
         // Returning the indices of the pivots
         // because we cannot return two elements
         // from a function, we do that using an array.
-        return new int[] { leftPos, rightPos };
+        return new int[]{leftPos, rightPos};
     }
 
-    public <T> int[] partition(T[] arr, int low, int high, java.util.Comparator<? super T> comparator) {
+    public <T> int[] partition(T[] arr,
+                               int low,
+                               int high,
+                               java.util.Comparator<? super T> comparator) {
         if (comparator.compare(arr[low], arr[high]) > 0) {
             swap(arr, low, high);
         }
@@ -151,7 +158,7 @@ public class DualPivotQuickSort implements SortingAlgorithm {
         swap(arr, low, leftPos);
         swap(arr, high, rightPos);
 
-        return new int[] { leftPos, rightPos };
+        return new int[]{leftPos, rightPos};
     }
 
     public void swap(int[] arr, int i, int j) {
@@ -168,9 +175,10 @@ public class DualPivotQuickSort implements SortingAlgorithm {
 
     public static void main(String[] args) {
         DualPivotQuickSort sort = new DualPivotQuickSort();
-        int[] arr = new int[] { 2, 1, 7, 4 };
+        int[] arr = new int[]{2, 1, 7, 4};
         sort.sort(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.println(i);
+        }
     }
 }

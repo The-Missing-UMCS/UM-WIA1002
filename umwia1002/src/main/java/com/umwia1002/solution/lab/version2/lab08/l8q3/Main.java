@@ -1,8 +1,10 @@
 package com.umwia1002.solution.lab.version2.lab08.l8q3;
 
+import com.umwia1002.solution.lab.version2.lab08.impl.*;
+
 import java.util.*;
 
-public class SortTest {
+public class Main {
 
     public static void main(String[] args) {
         // Generating 1000 sets of 100000 random numbers

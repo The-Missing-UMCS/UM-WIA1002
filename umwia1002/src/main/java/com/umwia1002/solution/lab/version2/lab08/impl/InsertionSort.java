@@ -1,4 +1,6 @@
-package com.umwia1002.solution.lab.version2.lab08.l8q3;
+package com.umwia1002.solution.lab.version2.lab08.impl;
+
+import java.util.Comparator;
 
 public class InsertionSort implements SortingAlgorithm {
 
@@ -29,7 +31,7 @@ public class InsertionSort implements SortingAlgorithm {
     }
 
     @Override
-    public <T> void sort(T[] arr, java.util.Comparator<? super T> comparator) {
+    public <T> void sort(T[] arr, Comparator<T> comparator) {
         int n = arr.length;
         for (int i = 1; i < n; i++) {
             int j = i - 1;

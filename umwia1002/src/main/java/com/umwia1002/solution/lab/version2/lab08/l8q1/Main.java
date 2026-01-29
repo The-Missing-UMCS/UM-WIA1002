@@ -3,6 +3,7 @@ package com.umwia1002.solution.lab.version2.lab08.l8q1;
 import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
@@ -11,12 +12,13 @@ public class Main {
             int val1 = n1 & 1, val2 = n2 & 1;
             return -1 * Integer.compare(val1, val2);
         }, Comparator.comparingInt(x -> x));
-        
+
         MyComparator condition = new MyComparator(ls);
         IterativeMergeSort algo1 = new IterativeMergeSort(condition);
         RecursiveMergeSort algo2 = new RecursiveMergeSort(condition);
 
-        int n; int[] arr;
+        int n;
+        int[] arr;
 
         System.out.print("Enter N Special Random Number within 0-100: ");
         n = sc.nextInt();

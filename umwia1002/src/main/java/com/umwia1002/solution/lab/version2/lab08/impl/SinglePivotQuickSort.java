@@ -1,4 +1,6 @@
-package com.umwia1002.solution.lab.version2.lab08.l8q3;
+package com.umwia1002.solution.lab.version2.lab08.impl;
+
+import java.util.Comparator;
 
 public class SinglePivotQuickSort implements SortingAlgorithm {
 
@@ -40,7 +42,7 @@ public class SinglePivotQuickSort implements SortingAlgorithm {
     }
 
     @Override
-    public <T> void sort(T[] arr, java.util.Comparator<? super T> comparator) {
+    public <T> void sort(T[] arr, Comparator<T> comparator) {
         int n = arr.length;
         if (n < 2) {
             return;
@@ -90,7 +92,10 @@ public class SinglePivotQuickSort implements SortingAlgorithm {
         return i + 1;
     }
 
-    public <T> int partition(T[] arr, int low, int high, java.util.Comparator<? super T> comparator) {
+    public <T> int partition(T[] arr,
+                             int low,
+                             int high,
+                             java.util.Comparator<? super T> comparator) {
         T pivot = arr[high];
         int i = low - 1;
         for (int j = low; j <= high - 1; j++) {

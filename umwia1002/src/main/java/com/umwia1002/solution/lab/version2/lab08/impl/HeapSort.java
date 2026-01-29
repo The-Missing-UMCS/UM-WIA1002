@@ -1,4 +1,6 @@
-package com.umwia1002.solution.lab.version2.lab08.l8q3;
+package com.umwia1002.solution.lab.version2.lab08.impl;
+
+import java.util.Comparator;
 
 public class HeapSort implements SortingAlgorithm {
 
@@ -28,7 +30,7 @@ public class HeapSort implements SortingAlgorithm {
     }
 
     @Override
-    public <T> void sort(T[] arr, java.util.Comparator<? super T> comparator) {
+    public <T> void sort(T[] arr, Comparator<T> comparator) {
         int n = arr.length;
 
         for (int i = (n >> 1) - 1; i >= 0; i--) {
@@ -49,17 +51,22 @@ public class HeapSort implements SortingAlgorithm {
             int child = (parent << 1) + 1;
             int childVal = arr[child];
             int right = child + 1;
-            if (right < n && arr[right] > arr[child])
+            if (right < n && arr[right] > arr[child]) {
                 childVal = arr[child = right];
-            if (childVal <= parentVal)
+            }
+            if (childVal <= parentVal) {
                 break;
+            }
             arr[parent] = childVal;
             parent = child;
         }
         arr[parent] = parentVal;
     }
 
-    public <T> void heapify(T[] arr, int n, int parent, java.util.Comparator<? super T> comparator) {
+    public <T> void heapify(T[] arr,
+                            int n,
+                            int parent,
+                            java.util.Comparator<? super T> comparator) {
         T parentVal = arr[parent];
         int half = n >>> 1;
 

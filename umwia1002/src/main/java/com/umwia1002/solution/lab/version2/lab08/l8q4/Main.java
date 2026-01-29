@@ -1,6 +1,6 @@
 package com.umwia1002.solution.lab.version2.lab08.l8q4;
 
-import com.umwia1002.solution.lab.version2.lab08.l8q3.SortingAlgorithms;
+import com.umwia1002.solution.lab.version2.lab08.impl.SortingAlgorithms;
 
 import java.util.Scanner;
 
