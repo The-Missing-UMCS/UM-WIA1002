@@ -1,8 +1,9 @@
 package com.umwia1002.solution.lab.version1.lab11;
 
 public class TesterBST {
-	public static void main(String[] args) {
-		BST<Integer> bst = new BST<>();
+
+    public static void main(String[] args) {
+        BST<Integer> bst = new BST<>();
 
         int[] input = {45, 88, 54, 76, 98, 1, 2, 20, 6, 53, 42, 100, 86, 32, 28, 65, 14};
         System.out.print("Input Data: ");
@@ -39,8 +40,9 @@ public class TesterBST {
         System.out.println("Max Value: " + bst.maxValue());
 
         System.out.print("A path from the root to 6 is: ");
-        for (TreeNode<Integer> node : bst.path(6))
+        for (TreeNode<Integer> node : bst.path(6)) {
             System.out.print(node.elem + " ");
+        }
         System.out.println();
-	}
+    }
 }
