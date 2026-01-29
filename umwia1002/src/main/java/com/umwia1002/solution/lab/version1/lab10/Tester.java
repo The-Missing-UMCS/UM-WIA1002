@@ -14,6 +14,7 @@ import java.util.List;
 import static com.umwia1002.solution.util.ConsoleUtil.logInfo;
 
 public class Tester {
+
     public static void main(String[] args) {
         List<SortingAlgorithm> algorithms = Arrays.asList(
             new BubbleSort(), new InsertionSort(), new SelectionSort(),
@@ -27,10 +28,12 @@ public class Tester {
             System.out.printf("Before sorting: %s%n", Arrays.toString(arr));
 
             algorithm.sort(arr);
-            System.out.printf("%s --> ascending sort: %s%n", algorithm.name(), Arrays.toString(arr));
+            System.out.printf("%s --> ascending sort: %s%n", algorithm.name(),
+                Arrays.toString(arr));
 
             algorithm.sortDescending(arr);
-            System.out.printf("%s --> descending sort: %s%n", algorithm.name(), Arrays.toString(arr));
+            System.out.printf("%s --> descending sort: %s%n", algorithm.name(),
+                Arrays.toString(arr));
             System.out.println();
         });
     }

@@ -18,8 +18,9 @@ public class SelectionSort implements SortingAlgorithm {
 
             for (int j = 1 + i; j < arr.length; j++) {
                 // if isAscending = true, index = minIndex else index = maxIndex
-                if (comparator.compare(arr[j], arr[index]) < 0)
+                if (comparator.compare(arr[j], arr[index]) < 0) {
                     index = j;
+                }
             }
 
             if (index != i) {
