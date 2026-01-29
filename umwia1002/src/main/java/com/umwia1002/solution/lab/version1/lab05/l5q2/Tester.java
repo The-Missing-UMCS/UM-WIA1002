@@ -1,8 +1,9 @@
-package com.umwia1002.solution.lab.version1.lab5.Q2;
+package com.umwia1002.solution.lab.version1.lab05.l5q2;
 
 import java.util.Scanner;
 
 public class Tester {
+
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class Tester {
             if (input.equalsIgnoreCase("n")) {
                 break;
             }
-            if(!input.isEmpty()) {
+            if (!input.isEmpty()) {
                 nameList.add(input);
             }
         }
@@ -34,12 +35,13 @@ public class Tester {
     }
 
     public static void rename(SinglyLinkedList<String> nameList) {
-        System.out.println("\nAll the names entered are correct? Enter 'r' to rename the student name, 'n' to proceed");
+        System.out.println(
+            "\nAll the names entered are correct? Enter 'r' to rename the student name, 'n' to proceed");
         if (!"r".equalsIgnoreCase(scanner.nextLine().trim())) {
             return;
         }
         String oldName = input("Enter the existing student name that u want to rename : ");
-        if(!nameList.contains(oldName)) {
+        if (!nameList.contains(oldName)) {
             System.out.printf("Student name '%s' not found.\n", oldName);
             return;
         }
@@ -51,7 +53,8 @@ public class Tester {
     }
 
     public static void removeStudent(SinglyLinkedList<String> nameList) {
-        System.out.println("\nDo you want to remove any of your student name? Enter 'y' for yes, 'n' to proceed");
+        System.out.println(
+            "\nDo you want to remove any of your student name? Enter 'y' for yes, 'n' to proceed");
 
         if (!"y".equalsIgnoreCase(scanner.nextLine().trim())) {
             return;

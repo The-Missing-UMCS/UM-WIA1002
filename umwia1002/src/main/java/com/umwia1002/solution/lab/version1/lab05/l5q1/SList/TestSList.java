@@ -1,6 +1,7 @@
-package com.umwia1002.solution.lab.version1.lab5.Q1.SList;
+package com.umwia1002.solution.lab.version1.lab05.l5q1.SList;
 
 public class TestSList {
+
     public static void main(String[] args) {
         SList<String> list = new SList<>();
         list.appendEnd("Linked list");
@@ -15,7 +16,5 @@ public class TestSList {
 
         list.clear();
         list.display();
-
     }
-
 }

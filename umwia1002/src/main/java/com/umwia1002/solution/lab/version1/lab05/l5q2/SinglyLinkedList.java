@@ -1,8 +1,9 @@
-package com.umwia1002.solution.lab.version1.lab5.Q2;
+package com.umwia1002.solution.lab.version1.lab05.l5q2;
 
 import java.util.NoSuchElementException;
 
 public class SinglyLinkedList<E> {
+
     Node<E> head;
     Node<E> tail;
     int size;
@@ -22,11 +23,11 @@ public class SinglyLinkedList<E> {
         checkIfElementExist(e);
 
         int index = indexOf(e);
-        if (index == 0)
+        if (index == 0) {
             removeFirst();
-        else if (index == size - 1)
+        } else if (index == size - 1) {
             removeLast();
-        else {
+        } else {
             Node<E> prev = node(index - 1);
             prev.next = prev.next.next;
             size--;
@@ -34,18 +35,21 @@ public class SinglyLinkedList<E> {
     }
 
     private void removeFirst() {
-        if (head == null)
+        if (head == null) {
             throw new NoSuchElementException();
+        }
 
         head = head.next;
-        if (head == null)
+        if (head == null) {
             tail = null;
+        }
         size--;
     }
 
     private void removeLast() {
-        if (tail == null)
+        if (tail == null) {
             throw new NoSuchElementException();
+        }
 
         if (head.equals(tail)) {
             head = tail = null;
@@ -82,14 +86,16 @@ public class SinglyLinkedList<E> {
         int index = 0;
         if (e == null) {
             for (Node<E> node = head; node != null; node = node.next) {
-                if (node.item == e)
+                if (node.item == e) {
                     return index;
+                }
                 index++;
             }
         } else {
             for (Node<E> node = head; node != null; node = node.next) {
-                if (node.item.equals(e))
+                if (node.item.equals(e)) {
                     return index;
+                }
                 index++;
             }
         }
@@ -98,13 +104,15 @@ public class SinglyLinkedList<E> {
     }
 
     private void checkIfElementExist(E e) {
-        if (indexOf(e) < 0)
+        if (indexOf(e) < 0) {
             throw new NoSuchElementException();
+        }
     }
 
     private void checkElementIndex(int index) {
-        if (!(index >= 0 && index < size))
+        if (!(index >= 0 && index < size)) {
             throw new IndexOutOfBoundsException("Index out of bound.");
+        }
     }
 
     private Node<E> node(int index) {
@@ -119,6 +127,7 @@ public class SinglyLinkedList<E> {
     }
 
     private static class Node<E> {
+
         E item;
         Node<E> next;
 
