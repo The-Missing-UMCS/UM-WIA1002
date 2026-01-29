@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab3;
+package com.umwia1002.solution.lab.version2.lab03;
 
 import com.umwia1002.solution.util.InputUtil;
 
@@ -10,7 +10,8 @@ import java.util.Set;
 /**
  * Generates permutations of an array of random integers.
  */
-public class Q3 {
+public class l3q3 {
+
     public static void main(String[] args) {
         int numElements = InputUtil.getIntInput("Enter number of elements: ");
 
@@ -26,8 +27,8 @@ public class Q3 {
      * Generates a random array of integers.
      *
      * @param size the size of the array
-     * @param min  the minimum value (inclusive)
-     * @param max  the maximum value (inclusive)
+     * @param min the minimum value (inclusive)
+     * @param max the maximum value (inclusive)
      * @return the generated random array
      */
     private static int[] generateRandomArray(int size, int min, int max) {
@@ -49,8 +50,8 @@ public class Q3 {
      * Recursively generates permutations and avoids duplicates using a set.
      *
      * @param array the input array
-     * @param perm  the current permutation being built
-     * @param set   the set to store unique permutations
+     * @param perm the current permutation being built
+     * @param set the set to store unique permutations
      */
     private static void generatePermutations(int[] array, int perm, Set<Integer> set) {
         if (array.length == 0) {

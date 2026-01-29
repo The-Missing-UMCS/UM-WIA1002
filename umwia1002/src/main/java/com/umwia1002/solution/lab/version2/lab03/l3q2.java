@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab3;
+package com.umwia1002.solution.lab.version2.lab03;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -12,7 +12,8 @@ import static com.umwia1002.solution.util.FileUtil.*;
 /**
  * Reverses the content of a file and writes it to another file.
  */
-public class Q2 {
+public class l3q2 {
+
     public static void main(String[] args) {
         Path inputPath = Path.of(chain(LAB_V2_LAB3, IO_FILES, "text.txt"));
         Path outputPath = Path.of(chain(LAB_V2_LAB3, IO_FILES, "reverse.txt"));

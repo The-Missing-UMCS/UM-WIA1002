@@ -1,14 +1,16 @@
-package com.umwia1002.solution.lab.version2.lab3;
+package com.umwia1002.solution.lab.version2.lab03;
 
 import java.util.stream.Stream;
 
-public class Q1 {
+public class l3q1 {
+
     public static void main(String[] args) {
         System.out.println("Mesh Topology");
 
         Stream.of(4, 7).forEach(n -> {
-            System.out.printf("There are %d switches in the campus.\n", n);
-            System.out.printf("The total number of connections required is %d\n", calculateConnections(n));
+            System.out.printf("There are %d switches in the campus.%n", n);
+            System.out.printf("The total number of connections required is %d%n",
+                calculateConnections(n));
         });
     }
 
@@ -19,7 +21,9 @@ public class Q1 {
      * @return the total number of connections
      */
     public static int calculateConnections(int n) {
-        if (n <= 2) return 1;
+        if (n <= 2) {
+            return 1;
+        }
         return (n - 1) + calculateConnections(n - 1);
     }
 
