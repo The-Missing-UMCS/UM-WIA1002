@@ -1,6 +1,6 @@
-package com.umwia1002.solution.lab.version1.lab2;
+package com.umwia1002.solution.lab.version1.lab02;
 
-import com.umwia1002.solution.lab.version1.lab2.L2Q3.l2q3b.CompareMax;
+import com.umwia1002.solution.lab.version1.lab02.l2q3.l2q3b.CompareMax;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
