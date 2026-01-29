@@ -1,4 +1,8 @@
-Version 1:
+# README
+
+Legacy code
+
+```java
 public static void main(String[] args) {
 		String parent = "./src/Lab5/Q5/xml_files/";
 		String[] files = new File(parent).list();
@@ -64,8 +68,10 @@ public static void main(String[] args) {
 			ex.printStackTrace();
 		}
 	}
+```
 
 Version 2:
+```java
 public static void main(String[] args) {
 		String parent = "./src/Lab5/Q5/xml_files/";
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(parent))) {
@@ -113,4 +119,5 @@ public static void main(String[] args) {
 			ex.printStackTrace();
 		}
 
-	}
+}
+```

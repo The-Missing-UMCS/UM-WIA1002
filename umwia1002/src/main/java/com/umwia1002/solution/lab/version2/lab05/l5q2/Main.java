@@ -1,6 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab5.Q2;
-
-import com.umwia1002.solution.util.TimerUtil;
+package com.umwia1002.solution.lab.version2.lab05.l5q2;
 
 import java.io.File;
 import java.util.*;
@@ -8,6 +6,7 @@ import java.util.*;
 import static com.umwia1002.solution.util.FileUtil.*;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
         final String file = chain(LAB_V2_LAB5, IO_FILES, "question.txt");
         try (Scanner sc = new Scanner(new File(file))) {
@@ -26,7 +25,8 @@ public class Main {
 
                 // c.
                 String[] postfixTokens = infixToPostfix(infixTokens);
-                System.out.printf("The postfix expression is : %s%n", String.join(" ", postfixTokens));
+                System.out.printf("The postfix expression is : %s%n",
+                    String.join(" ", postfixTokens));
 
                 // d.
                 try {
@@ -72,7 +72,8 @@ public class Main {
                 }
                 operatorStack.pop(); // Remove "(" from stack
             } else {
-                while (!operatorStack.isEmpty() && precedence(operatorStack.peek()) >= precedence(token)) {
+                while (!operatorStack.isEmpty() && precedence(operatorStack.peek()) >= precedence(
+                    token)) {
                     postfix.add(operatorStack.pop());
                 }
                 operatorStack.push(token);
@@ -129,7 +130,9 @@ public class Main {
             case "-" -> operand1 - operand2;
             case "*" -> operand1 * operand2;
             case "/" -> {
-                if (operand2 == 0) throw new ArithmeticException("Division by zero");
+                if (operand2 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
                 yield operand1 / operand2;
             }
             case "%" -> operand1 % operand2;
