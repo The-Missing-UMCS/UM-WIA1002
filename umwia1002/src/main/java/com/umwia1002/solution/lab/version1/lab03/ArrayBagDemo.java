@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version1.lab3;
+package com.umwia1002.solution.lab.version1.lab03;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -6,6 +6,7 @@ import java.util.function.BiFunction;
 import static java.util.stream.Collectors.joining;
 
 public class ArrayBagDemo {
+
     public static void main(String[] args) {
         ArrayBag<String> bag1 = new ArrayBag<>();
         ArrayBag<String> bag2 = new ArrayBag<>();
@@ -15,9 +16,12 @@ public class ArrayBagDemo {
 
         initializeBag("bag1", bag1, contentsOfBag1);
         initializeBag("bag2", bag2, contentsOfBag2);
-        interaction(BagInterface::union, bag1, bag2, "bag3, test the method union of bag1 and bag2");
-        interaction(BagInterface::intersection, bag1, bag2, "bag4, test the method intersection of bag1 and bag2");
-        interaction(BagInterface::difference, bag1, bag2, "bag5, test the method difference of bag1 and bag2");
+        interaction(BagInterface::union, bag1, bag2,
+            "bag3, test the method union of bag1 and bag2");
+        interaction(BagInterface::intersection, bag1, bag2,
+            "bag4, test the method intersection of bag1 and bag2");
+        interaction(BagInterface::difference, bag1, bag2,
+            "bag5, test the method difference of bag1 and bag2");
     }
 
     private static void interaction(BiFunction<BagInterface<String>, BagInterface<String>, BagInterface<String>> func,
