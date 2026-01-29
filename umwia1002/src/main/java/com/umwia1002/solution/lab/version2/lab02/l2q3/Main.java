@@ -1,11 +1,12 @@
-package com.umwia1002.solution.lab.version2.lab2.Q3;
+package com.umwia1002.solution.lab.version2.lab02.l2q3;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Tester {
+public class Main {
+
     public static void main(String[] args) {
         UNOGame game = new UNOGame();
         int drawsPerPlayer = 7;
@@ -30,7 +31,8 @@ public class Tester {
             System.out.printf("Player %d draws %d cards:%n", player, drawsPerPlayer);
             List<UNOCard> cards = useArrayList ? new ArrayList<>() : new LinkedList<>();
             game.drawCardsTo(drawsPerPlayer, cards);
-			System.out.println(cards.stream().map(String::valueOf).collect(Collectors.joining(" :: ")));
+            System.out.println(
+                cards.stream().map(String::valueOf).collect(Collectors.joining(" :: ")));
             System.out.println();
         }
     }

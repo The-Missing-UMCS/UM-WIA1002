@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab2.Q2;
+package com.umwia1002.solution.lab.version2.lab02.l2q2;
 
 /**
  * A simple log interface for managing a collection of items.

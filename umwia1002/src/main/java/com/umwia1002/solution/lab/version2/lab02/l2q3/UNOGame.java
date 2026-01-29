@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab2.Q3;
+package com.umwia1002.solution.lab.version2.lab02.l2q3;
 
 import java.util.HashSet;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class UNOGame {
+
     private static final int TOTAL_CARDS = 48;
     private final Set<Integer> drawnCards;
 

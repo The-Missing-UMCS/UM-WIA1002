@@ -1,4 +1,4 @@
-package com.umwia1002.solution.lab.version2.lab2.Q1;
+package com.umwia1002.solution.lab.version2.lab02.l2q1;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +9,7 @@ import java.util.*;
 @Getter
 @RequiredArgsConstructor
 public class NonDuplicate<T extends List<Integer>> {
+
     private static final int DEFAULT_LOWER_BOUND = 0;
     private static final int DEFAULT_UPPER_BOUND = 100;
 

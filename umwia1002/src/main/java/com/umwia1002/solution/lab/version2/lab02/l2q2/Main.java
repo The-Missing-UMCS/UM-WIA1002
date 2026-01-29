@@ -1,6 +1,7 @@
-package com.umwia1002.solution.lab.version2.lab2.Q2;
+package com.umwia1002.solution.lab.version2.lab02.l2q2;
 
-public class Tester {
+public class Main {
+
     public static void main(String[] args) {
         System.out.println("Create a text file log with maximum records equal to 5");
         TextFileLog<String> textFileLog = new TextFileLog<>(5);
