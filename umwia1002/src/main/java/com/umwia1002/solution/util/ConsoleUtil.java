@@ -5,6 +5,7 @@ import org.jline.jansi.Ansi;
 import static org.jline.jansi.Ansi.ansi;
 
 public class ConsoleUtil {
+
     public static final Ansi.Color RED = Ansi.Color.RED;
     public static final Ansi.Color GREEN = Ansi.Color.GREEN;
     public static final Ansi.Color YELLOW = Ansi.Color.YELLOW;

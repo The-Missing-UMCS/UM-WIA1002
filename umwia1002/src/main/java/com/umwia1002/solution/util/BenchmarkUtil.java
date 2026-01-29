@@ -1,7 +1,10 @@
 package com.umwia1002.solution.util;
 
 public class BenchmarkUtil {
-    public static void benchmarkFunction(String functionName, long iterations, Runnable functionToTest) {
+
+    public static void benchmarkFunction(String functionName,
+                                         long iterations,
+                                         Runnable functionToTest) {
         long maxExecutionTime = getMaxExecutionTime(functionToTest, iterations);
         System.out.printf("Execution time for %s: %s ns%n", functionName, maxExecutionTime);
     }

@@ -15,6 +15,7 @@ import java.util.function.Function;
 @Getter
 @RequiredArgsConstructor
 public abstract class Recordable<INPUT, OUTPUT> {
+
     protected final Storage<OUTPUT> storage;
 
     /**

@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class LaTeXUtil {
+
     public static String format(String expression) {
         return "$%s$".formatted(expression);
     }
@@ -28,7 +29,8 @@ public class LaTeXUtil {
         // Draw the formula on the image
         Graphics2D g2 = image.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+            RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
         g2.setColor(Color.WHITE); // Set the background color to white
         g2.fillRect(0, 0, image.getWidth(), image.getHeight());
         icon.paintIcon(new JLabel(), g2, 0, 0); // Paint the formula onto the image

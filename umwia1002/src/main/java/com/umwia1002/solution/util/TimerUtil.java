@@ -1,6 +1,7 @@
 package com.umwia1002.solution.util;
 
 public class TimerUtil {
+
     public static void delay() {
         delay(1000);
     }

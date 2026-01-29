@@ -6,6 +6,7 @@ package com.umwia1002.solution.util;
  * @param <T> The type of objects stored.
  */
 public interface Storage<T> {
+
     /**
      * Adds an object to the storage.
      *

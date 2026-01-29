@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public final class InputUtil {
+
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static String getStringInput(String message) {
@@ -28,11 +29,18 @@ public final class InputUtil {
         return getValidatedInput(message, inputSupplier, _ -> true, errorMessage);
     }
 
-    public static <T> T getValidatedInput(String message, Supplier<T> inputSupplier, Predicate<T> validator, String errorMessage) {
+    public static <T> T getValidatedInput(String message,
+                                          Supplier<T> inputSupplier,
+                                          Predicate<T> validator,
+                                          String errorMessage) {
         return getValidatedInput(message, inputSupplier, validator, errorMessage, "Invalid input.");
     }
 
-    public static <T> T getValidatedInput(String message, Supplier<T> supplier, Predicate<T> validator, String errorMessage, String invalidMessage) {
+    public static <T> T getValidatedInput(String message,
+                                          Supplier<T> supplier,
+                                          Predicate<T> validator,
+                                          String errorMessage,
+                                          String invalidMessage) {
         while (true) {
             try {
                 System.out.print(message);
