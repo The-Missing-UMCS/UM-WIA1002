@@ -1,6 +1,6 @@
-package com.umwia1002.solution.tutorial.tutorial9;
+package com.umwia1002.solution.tutorial.tutorial09;
 
-public class T9Q2 {
+public class t9q2 {
 	public static void main(String[] args) {
 		// StackOverflow error
 		// The base case n == 0 will never execute for n > 0 
